@@ -1,0 +1,229 @@
+<html>
+  <head>
+  
+    <!-- 99.9% of this was scriptkittied from W3schools fam. nothin to see here. -->
+
+    <title>Big Soda Music</title>
+	
+	<style type="text/css">
+	  body {
+	    background-color: #000000;
+		background-size: 100% auto;
+	  } 
+	  
+      .container1 {
+        position: relative;
+        width: 20%;
+      }
+
+      .image {
+        display: block;
+        width: 100%;
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: .5s ease;
+      }
+
+      .container:hover .overlay {
+        opacity: 1;
+      }
+	  
+      .image2 {
+        display: block;
+        width: 100%;
+      }
+	  
+	  h1 {
+	    font-family: "Sans-serif", sans-serif; 
+	    font-size: 150%;
+		font-style: bold;
+        color: #f35626;
+        background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-animation: hue 17s infinite linear;
+      }
+
+ 	  @-webkit-keyframes hue {
+        from {
+          -webkit-filter: hue-rotate(0deg);
+        }
+        to {
+          -webkit-filter: hue-rotate(360deg);
+        }
+      }
+	  
+	  p1 { font-family: "Sans-serif", sans-serif; 
+	      font-size: 400%;
+		  font-style: bold;
+		  color: #DDDDDD;}
+		  
+	  p2 { font-family: "Sans-serif", sans-serif; 
+	      font-size: 80%;
+		  font-style: bold;
+		  color: #DDDDDD;}
+		  
+	  p3 { font-family: "Sans-serif", sans-serif; 
+	      font-size: 210%;
+		  font-style: bold;
+		  color: #DDDDDD;}
+		  
+	  p4 { font-family: "Sans-serif", sans-serif;
+	      font-size: 150%;
+		  font-style: bold;
+		  color: #FFFFFF;}
+		 
+	  div.container {
+	    width: 80%
+	  }
+	  header, footer {
+	    padding: 1em;
+		color: black;
+		background-color: black;
+		clear: left;
+		text-align: center;
+	  }
+	  section {
+	    margin-left: 20%;
+		border-left: 1px black;
+		padding: 0em;
+		overflow: hidden;
+		text-align: center;
+	  }
+	
+	</style>
+	
+  </head>
+  <body>
+  
+    <center>
+	  <br>
+	  
+	  <img src="sh_2.png" width="30%">
+	  
+	  <div class="container">
+	  
+	  <header>
+	  <center>
+	  
+	  <br>
+	  <h1>Hey there! <br>
+	  Welcome to my personal website! Make <br>
+	  yourself comfortable. I'm Big Soda - an <br>
+	  American songwriter. It's nice to meet you! <br><br>
+	  My debut album, <br>
+	  <i>Sugarhead</i>, will be out for your enjoyment <br>
+	  on December 13, 2017. Until then, hang in <br>
+	  there, and make sure to get all up in my <br>
+	  social media to stay updated! Enjoy the <br>
+	  sights and sounds!<br><br>Love,<br>Big Soda</h1><br>
+	  <br>
+	  
+	  
+	  <a href="https://www.facebook.com/void.ray.1"><img src="face.png" width="30px"></a>
+	  <a href="https://www.instagram.com/josh.the.engineer/"><img src="inst.png" width="30px"></a>
+	  <a href="https://twitter.com/TheRealBigSoda"><img src="twit.png" width="30px"></a>
+	  
+	  </center>
+	  <br>
+	  </header>
+	  <footer>
+	  
+	  <p3>
+	  The Countdown:
+	  </p3>
+	  
+	  <p1>
+	  <p id="demo"></p></p1>
+
+      <script>
+        var countDownDate = new Date("Dec 13, 2017 00:00:00").getTime();
+
+        var x = setInterval(function() {
+          var now = new Date().getTime();
+          var distance = countDownDate - now;
+    
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+		  
+          document.getElementById("demo").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+    
+          if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+          }
+        }, 1000);
+      </script>
+	  
+	  </footer>
+	  
+	  </div><br>
+	  <div class="container">
+	  <header>
+	  
+	    <center>
+	    <h1>
+	  
+	    Here's the album art for your visual tastebuds:<br><br>
+	  
+	    <img src="sh_3.png" width="70%"><br><br>
+	  
+	    And here are some links to some of the<br>
+		fantastic artists that will be featured<br>
+		on my album:<br><br>
+		</h1>
+		
+		<p4>
+		<a href="http://www.caseycopesodope.com/">
+		CASEY COPE</a><br>
+		<a href="https://www.youtube.com/channel/UCE6acMV3m35znLcf0JGNn7Q">
+		GIBI ASMR</a><br>
+		<a href="https://www.youtube.com/channel/UCgGhVPf9JH9S41mJwJwgNbg?pbjreload=10">
+	    DR. TINGLES</a><br>
+		<a href="https://soundcloud.com/aleos1">
+		LEO SHULMAN aka ALEOS</a><br><br>
+		</p4>
+		
+		<h1>
+		Here's some contact info for me. Feel free<br>
+		to drop me a line and let me know how<br>
+ 		you're feeling:<br><br>
+	    </h1>
+		
+		<p4>
+		surferdaveforever@gmail.com
+		</p4><br><br><br>
+		
+		<h1>
+		That's all I have for now. I'll be updating<br>
+        this website with all the cool stuff I'm up<br>
+        to. Stay tuned, more goodies coming your way!<br>	
+		</h1>
+		<br><br>
+		
+	    </center>
+	  
+	  </header>
+	  <footer>
+	    <center>
+	  
+		<img src="bigsoda_sticker.png" width="14%">
+		<br>
+		</center>
+	  </footer>
+	  </div>
+	  
+    </center>
+  </body>
+</html>
