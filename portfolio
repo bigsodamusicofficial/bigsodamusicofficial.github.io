@@ -137,9 +137,12 @@
               Here you can find all the cool music I've<br>
               made or contributed to in some way. Enjoy!<br><br>
 		  
-          <a href="https://itunes.apple.com/us/album/sugarhead/1324683572?app=itunes&ign-mpt=uo%3D4">
-             <img src='logo_itunes.jpg' onmouseout="this.src='logo_itunes.jpg';" onmouseover="this.src='sugarcube a a.png';" / width="25%">
-          </a>
+		  </h1>
+		  
+		  <p4>As Big Soda:</p4>
+		  
+          <a href="https://therealbigsoda.bandcamp.com/album/sugarhead">
+             <img src='records/lil_sugarhead.jpg' width="15%"></a>
 		 
 	  </h1>
 		  
