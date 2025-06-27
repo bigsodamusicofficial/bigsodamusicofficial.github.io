@@ -86,7 +86,13 @@ def convert_csv_to_json(csv_path, output_path=None):
         return False
     
     
-    project_type_order = ["Selected Works"]
+    project_type_order = [
+      "Selected Works - My Best Stuff",
+      "Solo Material",
+      "Collaborative Projects",
+      "Mixing/Engineering",
+      "Featured Production"
+    ]
         #"Is Our Children Learning",
         #"Big Soda",
         #"Surfer Dave",
