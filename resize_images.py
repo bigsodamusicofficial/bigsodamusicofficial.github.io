@@ -1,15 +1,21 @@
 #!/usr/bin/env python3
 """
-Resize images to 300x300 pixels.
+Resize images to 300x300 pixels and prepare them for the portfolio.
+
+This script:
+1. Takes images from the new_additions_01 folder
+2. Resizes them to 300x300 pixels and places them in the images/resized folder
+3. Removes the original images from new_additions_01 folder
 
 This script requires the Pillow library to be installed:
 pip install Pillow
 
 Usage:
-python resize_images.py /Users/joshjacobs/Portfolio/images/new_additions_01
+python resize_images.py
 """
 
 import os
+import shutil
 from PIL import Image
 
 def resize_image(input_path, output_path, size=(300, 300)):
@@ -30,23 +36,30 @@ def resize_image(input_path, output_path, size=(300, 300)):
                 img_resized = img.resize(size, Image.LANCZOS)
                 img_resized.save(output_path)
             print(f"Resized: {os.path.basename(input_path)} -> {os.path.basename(output_path)}")
+            return True
     except Exception as e:
         print(f"Error resizing {input_path}: {e}")
+        return False
+
+def remove_original_file(file_path):
+    """Remove the original image file."""
+    try:
+        os.remove(file_path)
+        print(f"Removed original file: {os.path.basename(file_path)}")
+        return True
+    except Exception as e:
+        print(f"Error removing {file_path}: {e}")
+        return False
 
 def main():
-    """Main function to resize all images."""
-    import sys
+    """Main function to resize all images and prepare them for the portfolio."""
+    # Define directory paths
+    base_dir = "/Users/joshjacobs/Portfolio"
+    input_dir = os.path.join(base_dir, "images/new_additions_01")
+    resized_dir = os.path.join(base_dir, "images/resized")
     
-    # Get input directory from command line argument or use default
-    if len(sys.argv) > 1:
-        input_dir = sys.argv[1]
-    else:
-        input_dir = "/Users/joshjacobs/Portfolio/images/new_additions_01"
-    
-    output_dir = "/Users/joshjacobs/Portfolio/images/resized"
-    
-    # Create output directory if it doesn't exist
-    os.makedirs(output_dir, exist_ok=True)
+    # Create output directories if they don't exist
+    os.makedirs(resized_dir, exist_ok=True)
     
     # Get list of image files
     image_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp']
@@ -58,13 +71,30 @@ def main():
     print(f"Found {len(image_files)} images to process in {input_dir}")
     
     # Process each image
+    processed_files = []
     for i, filename in enumerate(image_files, 1):
         input_path = os.path.join(input_dir, filename)
-        output_path = os.path.join(output_dir, filename)
+        resized_path = os.path.join(resized_dir, filename)
+        
         print(f"[{i}/{len(image_files)}] Processing: {filename}")
-        resize_image(input_path, output_path)
+        
+        # Step 1: Resize image to 300x300
+        resize_success = resize_image(input_path, resized_path)
+        
+        # Step 2: Remove the original file after successful resize
+        if resize_success:
+            remove_success = remove_original_file(input_path)
+            if remove_success:
+                processed_files.append(filename)
     
-    print(f"Completed resizing {len(image_files)} images to 300x300.")
+    print(f"\nCompleted processing {len(processed_files)} images:")
+    for file in processed_files:
+        print(f"  - {file}")
+    
+    print("\nNext steps:")
+    print("1. Add these images to your portfolio-data.js file with 'images/resized/{filename}' path")
+    print("2. Update your index.html if needed")
+    print("3. Commit and push changes to GitHub")
 
 if __name__ == "__main__":
     main()
