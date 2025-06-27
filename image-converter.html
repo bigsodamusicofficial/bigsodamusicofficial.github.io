@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to Data URL Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .upload-section {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .preview {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .preview img {
+            max-width: 100%;
+            max-height: 300px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+            margin-top: 10px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-top: 20px;
+            padding: 10px;
+            font-family: monospace;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .instructions {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        h3 {
+            margin-top: 30px;
+        }
+        .cubes {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .cube-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 20px;
+            perspective: 600px;
+        }
+        .cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: translateZ(-100px);
+            animation: rotate 10s infinite linear;
+        }
+        .cube-face {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 2px solid #000;
+            line-height: 200px;
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+        }
+        .cube-face-front {
+            transform: rotateY(0deg) translateZ(100px);
+        }
+        .cube-face-back {
+            transform: rotateY(180deg) translateZ(100px);
+        }
+        .cube-face-right {
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        .cube-face-left {
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        .cube-face-top {
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        .cube-face-bottom {
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+        @keyframes rotate {
+            0% { transform: translateZ(-100px) rotateX(0deg) rotateY(0deg); }
+            100% { transform: translateZ(-100px) rotateX(360deg) rotateY(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Image to Data URL Converter</h1>
+    
+    <div class="upload-section">
+        <p>Select an image from your computer to convert it to a data URL</p>
+        <input type="file" id="imageInput" accept="image/*">
+    </div>
+    
+    <div class="preview">
+        <h3>Image Preview</h3>
+        <img id="preview" src="" alt="Preview will appear here">
+    </div>
+    
+    <h3>Data URL</h3>
+    <textarea id="dataUrl" placeholder="Data URL will appear here..." readonly></textarea>
+    
+    <div class="buttons">
+        <button id="copyBtn">Copy to Clipboard</button>
+        <button id="updateCubeBtn">Update Preview Cube</button>
+    </div>
+    
+    <h3>Cube Preview</h3>
+    <div class="cubes">
+        <div class="cube-container">
+            <div class="cube" id="previewCube">
+                <div class="cube-face cube-face-front"></div>
+                <div class="cube-face cube-face-back"></div>
+                <div class="cube-face cube-face-right"></div>
+                <div class="cube-face cube-face-left"></div>
+                <div class="cube-face cube-face-top"></div>
+                <div class="cube-face cube-face-bottom"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="instructions">
+        <h3>How to Use</h3>
+        <ol>
+            <li>Select an image file from your computer using the file input above</li>
+            <li>The image will be displayed in the preview and converted to a data URL</li>
+            <li>Click "Copy to Clipboard" to copy the data URL</li>
+            <li>Click "Update Preview Cube" to see the image on the cube</li>
+            <li>Paste the data URL into your Three.js project as the image source</li>
+        </ol>
+        
+        <h3>Next Steps</h3>
+        <p>After copying the data URL, you can use it in your Three.js portfolio by:</p>
+        <ol>
+            <li>Opening single-image-demo.html</li>
+            <li>Find the portfolioDatabase array in the JavaScript code</li>
+            <li>Replace one of the image URLs with the data URL you copied</li>
+            <li>Save the file and reload it in your browser</li>
+        </ol>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageInput = document.getElementById('imageInput');
+            const preview = document.getElementById('preview');
+            const dataUrlTextarea = document.getElementById('dataUrl');
+            const copyBtn = document.getElementById('copyBtn');
+            const updateCubeBtn = document.getElementById('updateCubeBtn');
+            const cubeFaces = document.querySelectorAll('.cube-face');
+            
+            imageInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const dataUrl = e.target.result;
+                    
+                    // Update preview
+                    preview.src = dataUrl;
+                    
+                    // Update data URL textarea
+                    dataUrlTextarea.value = dataUrl;
+                };
+                
+                reader.readAsDataURL(file);
+            });
+            
+            copyBtn.addEventListener('click', function() {
+                dataUrlTextarea.select();
+                document.execCommand('copy');
+                alert('Data URL copied to clipboard!');
+            });
+            
+            updateCubeBtn.addEventListener('click', function() {
+                const dataUrl = dataUrlTextarea.value;
+                if (!dataUrl) {
+                    alert('Please select an image first!');
+                    return;
+                }
+                
+                // Update all cube faces with the data URL
+                cubeFaces.forEach(face => {
+                    face.style.backgroundImage = `url(${dataUrl})`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

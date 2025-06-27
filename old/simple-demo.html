@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Cube Demo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        #canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 400px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        #info h2 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 24px;
+            font-weight: 300;
+        }
+        #info p {
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        .click-hint {
+            font-size: 0.9em;
+            color: #aaa;
+            font-style: italic;
+            text-align: right;
+            margin-top: 15px !important;
+        }
+        .header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+        }
+        .header h1 {
+            font-size: 28px;
+            font-weight: 300;
+            margin: 0;
+            padding: 0;
+        }
+        #instructions {
+            position: absolute;
+            top: 60px;
+            left: 20px;
+            max-width: 300px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Cube Portfolio Demo</h1>
+    </div>
+    <div id="instructions">
+        <p>This is a simple demo of the 3D cube concept.</p>
+        <p>• Click and drag to rotate the view</p>
+        <p>• Click on the cube to see project details</p>
+        <p>• Click on the info panel to open the link</p>
+    </div>
+    <div id="canvas"></div>
+    <div id="info">
+        <h2 id="project-title">Cosmic Beats</h2>
+        <p id="project-description">An experimental music visualization project that explores the intersection of sound and visual art. Click to discover more.</p>
+        <p class="click-hint">Click to open project →</p>
+    </div>
+
+    <!-- Import Three.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+    
+    <!-- Main script -->
+    <script>
+        // Demo script for a single portfolio cube
+        
+        // Global variables
+        let scene, camera, renderer, cube;
+        let raycaster, mouse;
+        
+        // Portfolio item to display
+        const portfolioItem = {
+            "id": "cosmic-beats",
+            "title": "Cosmic Beats",
+            "description": "An experimental music visualization project that explores the intersection of sound and visual art. Click to discover more.",
+            "url": "https://google.com"
+        };
+        
+        // Initialize the scene, camera, and renderer
+        function init() {
+            // Create scene
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x111111);
+            
+            // Create camera
+            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 5;
+            camera.position.y = 0.5;
+            
+            // Create renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            document.getElementById('canvas').appendChild(renderer.domElement);
+            
+            // Setup raycaster for mouse interaction
+            raycaster = new THREE.Raycaster();
+            mouse = new THREE.Vector2();
+            
+            // Setup controls
+            const controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.screenSpacePanning = false;
+            controls.minDistance = 3;
+            controls.maxDistance = 10;
+            controls.autoRotate = true;
+            controls.autoRotateSpeed = 2;
+            
+            // Add event listeners
+            window.addEventListener('resize', onWindowResize, false);
+            window.addEventListener('mousemove', onMouseMove, false);
+            window.addEventListener('click', onMouseClick, false);
+            
+            // Create the cube
+            createCube();
+            
+            // Add ambient light
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+            
+            // Add directional light for some shading
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(1, 1, 1);
+            scene.add(directionalLight);
+        }
+        
+        // Create a cube with colored faces
+        function createCube() {
+            const cubeSize = 2;
+            
+            // Define materials for each face with different colors
+            const materials = [
+                new THREE.MeshLambertMaterial({ color: 0xFF4136 }), // Red
+                new THREE.MeshLambertMaterial({ color: 0x2ECC40 }), // Green
+                new THREE.MeshLambertMaterial({ color: 0x0074D9 }), // Blue
+                new THREE.MeshLambertMaterial({ color: 0xFFDC00 }), // Yellow
+                new THREE.MeshLambertMaterial({ color: 0xB10DC9 }), // Purple
+                new THREE.MeshLambertMaterial({ color: 0x01FF70 })  // Lime
+            ];
+            
+            // Create cube
+            const geometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
+            cube = new THREE.Mesh(geometry, materials);
+            
+            // Position cube
+            cube.position.set(0, 0, 0);
+            
+            // Add to scene
+            scene.add(cube);
+            
+            console.log("Cube created with colored faces");
+        }
+        
+        // Handle window resize
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        
+        // Handle mouse movement
+        function onMouseMove(event) {
+            // Calculate mouse position in normalized device coordinates
+            // (-1 to +1) for both components
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        }
+        
+        // Handle mouse click
+        function onMouseClick() {
+            // Update the raycaster with the camera and mouse position
+            raycaster.setFromCamera(mouse, camera);
+            
+            // Calculate objects intersecting the picking ray
+            const intersects = raycaster.intersectObject(cube);
+            
+            if (intersects.length > 0) {
+                // Cube was clicked
+                displayProjectInfo();
+            } else {
+                // Hide project info when clicking away
+                document.getElementById('info').style.display = 'none';
+            }
+        }
+        
+        // Display project information
+        function displayProjectInfo() {
+            document.getElementById('project-title').textContent = portfolioItem.title;
+            document.getElementById('project-description').textContent = portfolioItem.description;
+            
+            // Add link functionality
+            const infoElement = document.getElementById('info');
+            infoElement.style.display = 'block';
+            
+            // Set click handler for the info panel
+            infoElement.onclick = function() {
+                if (portfolioItem.url) {
+                    window.open(portfolioItem.url, '_blank');
+                }
+            };
+        }
+        
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // Rotate cube gently
+            cube.rotation.x += 0.003;
+            cube.rotation.y += 0.005;
+            
+            // Render scene
+            renderer.render(scene, camera);
+        }
+        
+        // Start the application
+        init();
+        animate();
+    </script>
+</body>
+</html>

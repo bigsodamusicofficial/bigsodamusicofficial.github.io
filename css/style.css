@@ -1,0 +1,95 @@
+/* Portfolio Viewer Styles */
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    height: auto;
+    overflow-y: scroll;
+    background-color: black;
+}
+
+#canvas {
+    position: fixed; /* fixed so it stays in place while you scroll */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+#info {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    transition: all 0.3s ease;
+}
+
+#info h2 {
+    margin-top: 0;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 300;
+}
+
+#info p {
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.click-hint {
+    font-size: 0.9em;
+    color: #aaa;
+    font-style: italic;
+    text-align: right;
+    margin-top: 15px !important;
+}
+
+#loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+}
+
+.header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+.header h1 {
+    font-size: 28px;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #info {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        max-width: none;
+    }
+    
+    .header h1 {
+        font-size: 20px;
+    }
+}

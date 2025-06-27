@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Cube - Local Images Demo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Allow vertical scrolling */
+            background-color: #000;
+            color: #fff;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        #canvas-container {
+            position: relative;
+            width: 100%;
+        }
+        .cube-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+            height: 300px;
+        }
+        .cube-cell {
+            width: 300px;
+            height: 300px;
+            margin: 0 20px;
+            position: relative;
+        }
+        #main-content {
+            padding-top: 100px; /* Space for the header */
+            padding-bottom: 100px;
+        }
+        #info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 400px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        #info h2 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 24px;
+            font-weight: 300;
+        }
+        #info p {
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        .click-hint {
+            font-size: 0.9em;
+            color: #aaa;
+            font-style: italic;
+            text-align: right;
+            margin-top: 15px !important;
+        }
+        .header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+        }
+        .header h1 {
+            font-size: 28px;
+            font-weight: 300;
+            margin: 0;
+            padding: 0;
+        }
+        #instructions {
+            position: absolute;
+            top: 60px;
+            left: 20px;
+            max-width: 300px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            border-radius: 5px;
+        }
+        #notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            z-index: 1000;
+            display: none;
+        }
+        #portfolio-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 5px;
+        }
+        select {
+            background-color: #333;
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #555;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Portfolio Cube - Local Images Demo</h1>
+    </div>
+    <div id="notification">Status message will appear here</div>
+    <div id="instructions">
+        <p><strong>Note: This demo must be run from a web server to load local images.</strong></p>
+        <p>• Run a server: <code>python -m http.server</code></p>
+        <p>• Open: <code>http://localhost:8000/single-image-demo.html</code></p>
+        <p>• Scroll to view all portfolio items</p>
+        <p>• Click on a cube to see project details</p>
+        <p>• Click on the info panel to open the link</p>
+    </div>
+    
+    <div id="main-content">
+        <!-- Cube grid will be generated here -->
+    </div>
+    
+    <div id="info">
+        <h2 id="project-title">Portfolio Item</h2>
+        <p id="project-description">Click on a cube to see details about that portfolio item.</p>
+        <p class="click-hint">Click to open project →</p>
+    </div>
+
+    <!-- Import Three.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+    
+    <!-- Main script -->
+    <script>
+        // Demo script for a single portfolio cube
+        
+        // Global variables
+        let scene, camera, renderer, cube;
+        let raycaster, mouse;
+        
+        // Database of portfolio items - generated from all images in the directory
+        const portfolioDatabase = [
+  {
+    "id": "big_apy",
+    "title": "Big Apy",
+    "description": "Portfolio item featuring Big Apy. Click to discover more about this project.",
+    "url": "https://google.com/search?q=big_apy",
+    "image": "images/big_apy.jpg",
+    "tags": [
+      "portfolio",
+      "image",
+      "big_apy"
+    ],
+    "date": "2025-06-24"
+  },
+  {
+    "id": "big_beber",
+    "title": "Big Beber",
+    "description": "Portfolio item featuring Big Beber. Click to discover more about this project.",
+    "url": "https://google.com/search?q=big_beber",
+    "image": "images/big_beber.jpg",
+    "tags": [
+      "portfolio",
+      "image",
+      "big_beber"
+    ],
+    "date": "2025-06-24"
+  },
+  {
+    "id": "big_eat",
+    "title": "Big Eat",
+    "description": "Portfolio item featuring Big Eat. Click to discover more about this project.",
+    "url": "https://google.com/search?q=big_eat",
+    "image": "images/big_eat.jpg",
+    "tags": [
+      "portfolio",
+      "image",
+      "big_eat"
+    ],
+    "date": "2025-06-24"
+  },
+  {
+    "id": "big_lsfe",
+    "title": "Big Lsfe",
+    "description": "Portfolio item featuring Big Lsfe. Click to discover more about this project.",
+    "url": "https://google.com/search?q=big_lsfe",
+    "image": "images/big_lsfe.jpg",
+    "tags": [
+      "portfolio",
+      "image",
+      "big_lsfe"
+    ],
+    "date": "2025-06-24"
+  },
+  {
+    "id": "big_monk",
+    "title": "Big Monk",
+    "description": "Portfolio item featuring Big Monk. Click to discover more about this project.",
+    "url": "https://google.com/search?q=big_monk",
+    "image": "images/big_monk.jpg",
+    "tags": [
+      "portfolio",
+      "image",
+      "big_monk"
+    ],
+    "date": "2025-06-24"
+  },
+  {
+    "id": "big_sfrp",
+    "title": "Big Sfrp",
+    "description": "Portfolio item featuring Big Sfrp. Click to discover more about this project.",
+    "url": "https://google.com/search?q=big_sfrp",
+    "image": "images/big_sfrp.png",
+    "tags": [
+      "portfolio",
+      "image",
+      "big_sfrp"
+    ],
+    "date": "2025-06-24"
+  },
+  {
+    "id": "iocl_lil",
+    "title": "Iocl Lil",
+    "description": "Portfolio item featuring Iocl Lil. Click to discover more about this project.",
+    "url": "https://google.com/search?q=iocl_lil",
+    "image": "images/iocl_lil.jpg",
+    "tags": [
+      "portfolio",
+      "image",
+      "iocl_lil"
+    ],
+    "date": "2025-06-24"
+  },
+  {
+    "id": "kah-small",
+    "title": "Kah-small",
+    "description": "Portfolio item featuring Kah-small. Click to discover more about this project.",
+    "url": "https://google.com/search?q=kah-small",
+    "image": "images/kah-small.jpg",
+    "tags": [
+      "portfolio",
+      "image",
+      "kah-small"
+    ],
+    "date": "2025-06-24"
+  },
+  {
+    "id": "lil_apy",
+    "title": "Lil Apy",
+    "description": "Portfolio item featuring Lil Apy. Click to discover more about this project.",
+    "url": "https://google.com/search?q=lil_apy",
+    "image": "images/lil_apy.png",
+    "tags": [
+      "portfolio",
+      "image",
+      "lil_apy"
+    ],
+    "date": "2025-06-24"
+  },
+  {
+    "id": "lil_big_big_big",
+    "title": "Lil Big Big Big",
+    "description": "Portfolio item featuring Lil Big Big Big. Click to discover more about this project.",
+    "url": "https://google.com/search?q=lil_big_big_big",
+    "image": "images/lil_big_big_big.jpg",
+    "tags": [
+      "portfolio",
+      "image",
+      "lil_big_big_big"
+    ],
+    "date": "2025-06-24"
+  }
+        ];
+        
+        // Current portfolio item
+        let currentPortfolioItem = portfolioDatabase[0];
+        
+        // Helper function to show notification
+        function showNotification(message, isError = false) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.backgroundColor = isError ? 'rgba(255, 50, 50, 0.8)' : 'rgba(0, 150, 0, 0.8)';
+            notification.style.display = 'block';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Initialize the scene, camera, and renderer
+        function init() {
+            // Create scene
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x111111);
+            
+            // Create camera
+            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 8; // Move camera back to see all cubes
+            camera.position.y = 0.5;
+            
+            // Create renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            document.getElementById('canvas').appendChild(renderer.domElement);
+            
+            // Setup raycaster for mouse interaction
+            raycaster = new THREE.Raycaster();
+            mouse = new THREE.Vector2();
+            
+            // Setup controls
+            const controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.screenSpacePanning = false;
+            controls.minDistance = 3;
+            controls.maxDistance = 10;
+            controls.autoRotate = true;
+            controls.autoRotateSpeed = 2;
+            
+            // Add event listeners
+            window.addEventListener('resize', onWindowResize, false);
+            window.addEventListener('mousemove', onMouseMove, false);
+            window.addEventListener('click', onMouseClick, false);
+            
+            // Add UI event listeners
+            document.getElementById('update-cube').addEventListener('click', updateCubeImage);
+            
+            // Populate dropdown with all portfolio items
+            populateDropdown();
+            
+            // Create the cube
+            createCube(currentPortfolioItem.image);
+            
+            // Add ambient light
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+            
+            // Add directional light for some shading
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(1, 1, 1);
+            scene.add(directionalLight);
+            
+            // Populate selector with portfolio items
+            const imageSelect = document.getElementById('image-select');
+            imageSelect.innerHTML = '';
+            
+            portfolioDatabase.forEach((item, index) => {
+                const option = document.createElement('option');
+                option.value = item.image;
+                option.textContent = item.title;
+                if (index === 0) {
+                    option.selected = true;
+                }
+                imageSelect.appendChild(option);
+            });
+        }
+        
+        // Handle updating the cube image
+        function updateCubeImage() {
+            const imageUrl = document.getElementById('image-select').value;
+            const selectedIndex = document.getElementById('image-select').selectedIndex;
+            
+            // Update current portfolio item
+            currentPortfolioItem = portfolioDatabase[selectedIndex];
+            
+            // Remove old cube
+            if (cube) {
+                scene.remove(cube);
+            }
+            
+            // Create new cube with selected image
+            createCube(imageUrl);
+        }
+        
+        // Create multiple cubes in a row
+        function createCube(imageUrl) {
+            const textureLoader = new THREE.TextureLoader();
+            const cubeSize = 2;
+            const spacing = 3; // Space between cubes
+            const numCubes = 3; // Number of cubes in a row
+            
+            // Clear existing cubes if any
+            if (cube) {
+                // If cube is an array, remove all cubes
+                if (Array.isArray(cube)) {
+                    cube.forEach(c => scene.remove(c));
+                } else {
+                    // If cube is a single object, remove it
+                    scene.remove(cube);
+                }
+            }
+            
+            // Initialize cube array
+            cube = [];
+            
+            showNotification("Loading texture...");
+            
+            // Check if we're running from file:// protocol
+            if (window.location.protocol === 'file:') {
+                showNotification("Error: This demo must be run from a web server (http/https), not directly from a file (file://). Please use a local server as explained in the instructions.", true);
+                // Still try to load the texture, but it will likely fail
+            }
+            
+            // Load texture
+            textureLoader.load(
+                imageUrl,
+                // Success callback
+                function(texture) {
+                    console.log("Texture loaded successfully:", imageUrl);
+                    showNotification("Texture loaded successfully!");
+                    
+                    // Create materials array with the same texture for all faces
+                    const materials = [];
+                    for (let i = 0; i < 6; i++) {
+                        materials.push(new THREE.MeshBasicMaterial({ map: texture }));
+                    }
+                    
+                    // Create multiple cubes
+                    for (let i = 0; i < numCubes; i++) {
+                        const geometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
+                        const cubeMesh = new THREE.Mesh(geometry, materials);
+                        
+                        // Position cubes in a row with spacing
+                        const xPosition = (i - Math.floor(numCubes/2)) * spacing;
+                        cubeMesh.position.set(xPosition, 0, 0);
+                        
+                        // Give each cube a different initial rotation
+                        cubeMesh.rotation.x = Math.random() * Math.PI;
+                        cubeMesh.rotation.y = Math.random() * Math.PI;
+                        
+                        // Give each cube slightly different rotation speeds
+                        cubeMesh.userData = {
+                            rotationSpeed: {
+                                x: 0.002 + Math.random() * 0.004, // Between 0.002 and 0.006
+                                y: 0.002 + Math.random() * 0.004,
+                                z: 0.001 + Math.random() * 0.002
+                            }
+                        };
+                        
+                        // Add to scene and store in array
+                        scene.add(cubeMesh);
+                        cube.push(cubeMesh);
+                    }
+                    
+                    console.log(`Created ${numCubes} cubes with the same texture`);
+                },
+                // Progress callback
+                undefined,
+                // Error callback
+                function(err) {
+                    console.error("Error loading texture:", imageUrl, err);
+                    showNotification(`Error loading texture: ${imageUrl}. Make sure you're running from a web server!`, true);
+                }
+            );
+        }
+        
+        // Handle window resize
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        
+        // Handle mouse movement
+        function onMouseMove(event) {
+            // Calculate mouse position in normalized device coordinates
+            // (-1 to +1) for both components
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        }
+        
+        // Handle mouse click
+        function onMouseClick() {
+            // Update the raycaster with the camera and mouse position
+            raycaster.setFromCamera(mouse, camera);
+            
+            // Calculate objects intersecting the picking ray
+            if (cube) {
+                let cubeObjects = Array.isArray(cube) ? cube : [cube];
+                const intersects = raycaster.intersectObjects(cubeObjects);
+                
+                if (intersects.length > 0) {
+                    // Cube was clicked
+                    displayProjectInfo();
+                } else {
+                    // Hide project info when clicking away
+                    document.getElementById('info').style.display = 'none';
+                }
+            }
+        }
+        
+        // Display project information
+        function displayProjectInfo() {
+            document.getElementById('project-title').textContent = currentPortfolioItem.title;
+            document.getElementById('project-description').textContent = currentPortfolioItem.description;
+            
+            // Add link functionality
+            const infoElement = document.getElementById('info');
+            infoElement.style.display = 'block';
+            
+            // Set click handler for the info panel
+            infoElement.onclick = function() {
+                if (currentPortfolioItem.url) {
+                    window.open(currentPortfolioItem.url, '_blank');
+                }
+            };
+        }
+        
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // Rotate cubes gently (if they exist)
+            if (cube) {
+                if (Array.isArray(cube)) {
+                    // If cube is an array, rotate each cube with its unique speed
+                    cube.forEach(c => {
+                        if (c.userData && c.userData.rotationSpeed) {
+                            c.rotation.x += c.userData.rotationSpeed.x;
+                            c.rotation.y += c.userData.rotationSpeed.y;
+                            c.rotation.z += c.userData.rotationSpeed.z;
+                        }
+                    });
+                } else if (typeof cube === 'object') {
+                    // For backward compatibility if cube is a single object
+                    cube.rotation.x += 0.003;
+                    cube.rotation.y += 0.005;
+                }
+            }
+            
+            // Render scene
+            renderer.render(scene, camera);
+        }
+        
+        // Start the application
+        init();
+        animate();
+    </script>
+</body>
+</html>
