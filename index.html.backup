@@ -42,55 +42,6 @@
             cursor: pointer;
             z-index: 1000; /* Ensure it's above the canvas */
         }
-        
-        /* Responsive styles for the info panel */
-        @media (max-width: 768px) {
-            #info {
-                left: 10px;
-                right: 10px;
-                bottom: 10px;
-                max-width: calc(100% - 20px); /* Almost full width on mobile */
-                padding: 15px;
-            }
-            
-            #info h2 {
-                font-size: 20px;
-            }
-            
-            #info p {
-                font-size: 14px;
-            }
-            
-            .header h1 {
-                font-size: 24px;
-            }
-            
-            #instructions {
-                position: absolute;
-                top: 70px; /* Move down a bit more on mobile */
-                left: 10px;
-                right: 10px;
-                max-width: calc(100% - 20px);
-                background-color: rgba(0, 0, 0, 0.8);
-                padding: 10px;
-                font-size: 14px;
-                z-index: 20;
-                border-radius: 5px;
-            }
-            
-            /* Add space at top of content on mobile - but not too much */
-            #content-wrapper {
-                padding-top: 120px; /* Moderate padding at top on mobile */
-            }
-            
-            /* Adjust the header position */
-            .header {
-                position: fixed; /* Keep header at top of screen */
-                top: 10px;
-                left: 10px;
-                z-index: 30;
-            }
-        }
         #info h2 {
             margin-top: 0;
             color: #fff;
@@ -204,10 +155,7 @@
             const far = 1000;
             
             camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-            
-            // Use consistent camera position for all devices
-            camera.position.set(0, 0, 40);  // Original distance works best for all screen sizes
-            
+            camera.position.set(0, 0, 40);  // Pull back even further for larger cubes
             camera.lookAt(0, 0, 0);
             
             // Create renderer
@@ -255,46 +203,10 @@
         // Create cubes for all portfolio items, grouped by project type
         function createCubes() {
             const textureLoader = new THREE.TextureLoader();
-            
-            // Set responsive values based on screen width
-            let cubeSize, spacing, itemsPerRow;
-            
-            function calculateResponsiveValues() {
-                const screenWidth = window.innerWidth;
-                
-                // For mobile screens (under 768px)
-                if (screenWidth < 768) {
-                    itemsPerRow = 2;  // Only 2 cubes per row on mobile
-                    cubeSize = 4.0;   // Smaller cubes
-                    spacing = 7.0;    // Less space between cubes
-                    
-                    // Also adjust camera position for better mobile view
-                    camera.position.z = 30;
-                } 
-                // For tablets (under 1024px)
-                else if (screenWidth < 1024) {
-                    itemsPerRow = 2;  // 2 cubes per row on tablets
-                    cubeSize = 5.0;   // Medium sized cubes
-                    spacing = 9.0;    // Medium spacing
-                    
-                    camera.position.z = 35;
-                } 
-                // For desktops
-                else {
-                    itemsPerRow = 3;  // 3 cubes per row on desktop
-                    cubeSize = 6.0;   // Original cube size
-                    spacing = 10.5;   // Original spacing
-                    
-                    camera.position.z = 40;
-                }
-                
-                camera.updateProjectionMatrix();
-            }
-            
-            // Calculate initial values
-            calculateResponsiveValues();
-            
+            const cubeSize = 6.0;         // Cube size
+            const spacing = 10.5;         // Space between cubes in the same group
             const baseGroupSpacing = 1.0;   // Base spacing between different project types
+            const itemsPerRow = 3;       // Number of cubes per row
             
             // Function to create a text label for a group
             function createGroupLabel(text, position) {
@@ -375,15 +287,7 @@
             document.body.appendChild(bodyPadding);
             
             // Track vertical position for each group
-            let currentYPosition = 10; // Default starting position
-            
-            // For mobile screens, use a LOWER value to push cubes DOWN
-            // (in Three.js, lower Y values position objects lower on screen)
-            if (window.innerWidth < 768) {
-                currentYPosition = -0; // Push cubes DOWN on mobile
-            } else if (window.innerWidth < 1024) {
-                currentYPosition = 0; // Slightly down on tablets
-            }
+            let currentYPosition = 10; // Start from top with offset
             
             // Create cubes for each project type group
             projectTypeOrder.forEach(projectType => {
@@ -461,18 +365,11 @@
         function onWindowResize() {
             // Update aspect ratio
             camera.aspect = window.innerWidth / window.innerHeight;
-            
-            // Use consistent camera position for all devices
-            camera.position.z = 40;
-            
             camera.updateProjectionMatrix();
             
             // Update renderer size
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit for better performance
-            
-            // Note: We don't recreate cubes on resize as that would be complex,
-            // but we do adjust the camera to accommodate the viewport change
         }
         
         // Handle mouse movement
