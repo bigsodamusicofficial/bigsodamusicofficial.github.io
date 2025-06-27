@@ -99,7 +99,8 @@
     </div>
     <div id="notification">Status message will appear here</div>
     <div id="instructions">
-        <p><strong>Click any cube to hear nice music :)</strong></p>
+        <p><strong>These cubes represent musical projects I've helped create over the years.</strong></p>
+        <p>Click a cube to take a listen!</p>
     </div>
     <div id="content-wrapper">
         <div id="canvas"></div>
@@ -128,9 +129,6 @@
         let raycaster, mouse;
         let selectedItem = null;
         let hoveredCube = null;
-        
-        // Portfolio database is loaded from js/portfolio-data.js
-        
         
         // Helper function to show notification
         function showNotification(message, isError = false) {
