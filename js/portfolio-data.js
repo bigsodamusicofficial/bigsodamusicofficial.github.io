@@ -394,5 +394,9 @@ const portfolioDatabase = [
 
 // Define the project type order (for consistent display)
 const projectTypeOrder = [
-  "Selected Works"
+  "Selected Works - My Best Stuff",
+  "Solo Material",
+  "Collaborative Projects",
+  "Mixing/Engineering",
+  "Featured Production"
 ];
