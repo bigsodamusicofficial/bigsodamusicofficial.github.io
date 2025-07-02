@@ -47,7 +47,7 @@ def convert_csv_to_json(csv_path, output_path=None):
             reader = csv.DictReader(csv_file)
             
             # Check required columns
-            required_columns = ['id', 'artistName', 'projectName', 'description', 
+            required_columns = ['id', 'artistName', 'projectName', 'description',
                               'url', 'image', 'projectType', 'releaseDate']
             
             if not all(col in reader.fieldnames for col in required_columns):
@@ -75,6 +75,7 @@ def convert_csv_to_json(csv_path, output_path=None):
                     'artistName': row['artistName'],
                     'projectName': row['projectName'],
                     'description': row['description'],
+                    'label': row['label'],
                     'url': row['url'],
                     'image': row['image'],
                     'projectType': row['projectType'],
@@ -88,9 +89,9 @@ def convert_csv_to_json(csv_path, output_path=None):
     
     project_type_order = [
       "Selected Works - My Best Stuff",
-      "Solo Material",
       "Collaborative Projects",
       "Mixing/Engineering",
+      "Solo Material",
       "Featured Production"
     ]
         #"Is Our Children Learning",

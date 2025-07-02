@@ -181,6 +181,12 @@
             line-height: 1.5;
             margin-bottom: 10px;
         }
+        #info p2 {
+            line-height: 1;
+            margin-bottom: 6px;
+            font-style: italic;
+            color: #888;
+        }
         .click-hint {
             font-size: 0.9em;
             color: #aaa;
@@ -257,6 +263,7 @@
         <div id="canvas"></div>
         <div id="info">
             <h2 id="project-title">Project Title</h2>
+            <p2 id="project-label">Project label will appear here.</p2>
             <p id="project-description">Project description will appear here.</p>
             <p class="click-hint">Listen →</p>
         </div>
@@ -442,10 +449,24 @@
             // Within each project type, sort by release date (newest first)
             const groupedItems = {};
             projectTypeOrder.forEach(type => {
-                // Filter by project type then sort by releaseDate in descending order (newest first)
-                groupedItems[type] = portfolioDatabase
-                    .filter(item => item.projectType === type)
-                    .sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate));
+                // Initialize empty array for this project type
+                groupedItems[type] = [];
+                
+                // For each item in the database
+                portfolioDatabase.forEach(item => {
+                    // Get project types as an array (split by comma if it contains commas)
+                    const itemTypes = item.projectType.includes(',') 
+                        ? item.projectType.split(',').map(t => t.trim()) 
+                        : [item.projectType.trim()];
+                    
+                    // If this item belongs in the current category, add it
+                    if (itemTypes.includes(type)) {
+                        groupedItems[type].push(item);
+                    }
+                });
+                
+                // Sort by release date (newest first)
+                groupedItems[type].sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate));
             });
             
             // Calculate total needed space
@@ -543,8 +564,11 @@
                                 cube.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
                                 
                                 // Store reference to the portfolio item
+                                // Include a unique ID that combines the project ID and type to avoid conflicts
+                                // when the same item appears in multiple categories
                                 cube.userData = {
-                                    portfolioItem: item
+                                    portfolioItem: item,
+                                    uniqueId: `${item.id}_${projectType.replace(/\s+/g, '_')}`
                                 };
                                 
                                 // Add to scene
@@ -646,6 +670,7 @@
             
             document.getElementById('project-title').textContent = `${item.artistName} - ${item.projectName}`;
             document.getElementById('project-description').textContent = item.description;
+            document.getElementById('project-label').textContent = item.label;
             
             // Position and show the info panel
             const infoElement = document.getElementById('info');
