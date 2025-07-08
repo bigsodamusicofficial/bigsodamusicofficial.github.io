@@ -439,6 +439,17 @@
       "image": "images/resized/up2-small.jpg",
       "projectType": "Featured Production",
       "releaseDate": "2021-03-12"
+    },
+    {
+      "id": "magic_trick_rap_show",
+      "artistName": "Kid Wolf",
+      "projectName": "Magic Trick Rap Show",
+      "description": "mastering",
+      "label": "Self-Released",
+      "url": "https://open.spotify.com/album/1jGnnlOUoDrHvYpTcoQsFR?si=I_p8TBC7SUKJjPz8Lx6t9A",
+      "image": "images/resized/lil_mtrs.png",
+      "projectType": "Mixing/Engineering",
+      "releaseDate": "2024-01-14"
     }
   ],
   "projectTypeOrder": [
