@@ -111,6 +111,17 @@
       "releaseDate": "2024-11-29"
     },
     {
+      "id": "lush_ones",
+      "artistName": "Surfer Dave",
+      "projectName": "Lush Ones",
+      "description": "all production, all writing",
+      "label": "Aviary Bridge",
+      "url": "https://open.spotify.com/album/3GqZptYaHEOc1Z6lu0hRgd?si=z1l4CSmsSXOC4xtsEy6FbA",
+      "image": "images/resized/lushones.jpg",
+      "projectType": "Solo Material, Selected Works - My Best Stuff",
+      "releaseDate": "2025-10-07"
+    },
+    {
       "id": "dreams,_vol_1",
       "artistName": "poochdreams",
       "projectName": "Dreams, Vol 1",
@@ -338,7 +349,7 @@
       "label": "Self-Released",
       "url": "https://open.spotify.com/album/61iNqab7vq1ZEKf9eAYiKU?si=1T-b7rMRTWuc7wuINHT1QQ",
       "image": "images/resized/big_monk.jpg",
-      "projectType": "Mixing/Engineering, Selected Works - My Best Stuff",
+      "projectType": "Mixing/Engineering",
       "releaseDate": "2021-02-11"
     },
     {
@@ -450,6 +461,17 @@
       "image": "images/resized/lil_mtrs.png",
       "projectType": "Mixing/Engineering",
       "releaseDate": "2024-01-14"
+    },
+    {
+      "id": "nt_outside",
+      "artistName": "Nick Tasker",
+      "projectName": "Outside",
+      "description": "mastering",
+      "label": "Self-Released",
+      "url": "https://open.spotify.com/album/1AbzAPGSxHJ8X7cvptKpsT?si=BEy4rQYMSOi1aCiixyzH0w",
+      "image": "images/resized/nt_outside.png",
+      "projectType": "Mixing/Engineering",
+      "releaseDate": "2025-09-23"
     }
   ],
   "projectTypeOrder": [
