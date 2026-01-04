@@ -472,6 +472,17 @@ const portfolioDatabase = [
     "image": "images/resized/nt_outside.png",
     "projectType": "Mixing/Engineering",
     "releaseDate": "2025-09-23"
+  },
+  {
+    "id": "zack_sanders_calligraphy",
+    "artistName": "Zack Sanders",
+    "projectName": "The Calligraphy of New Wheat",
+    "description": "mastering",
+    "label": "Self-Released",
+    "url": "https://open.spotify.com/album/1v30NYBMkUl9EO9YRXpZ7A?si=Ms_s3cw4TF6O3H0cJSfHcg",
+    "image": "images/resized/lil_zsnw.png",
+    "projectType": "Mixing/Engineering",
+    "releaseDate": "2025-12-21"
   }
 ];
 
