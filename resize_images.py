@@ -19,22 +19,29 @@ import shutil
 from PIL import Image
 
 def resize_image(input_path, output_path, size=(300, 300)):
-    """Resize an image to the specified size."""
+    """Resize an image to the specified size and convert to JPG."""
     try:
         with Image.open(input_path) as img:
-            # Convert image mode if necessary
-            if img.mode in ('RGBA', 'LA'):
-                # Images with transparency
-                background = Image.new('RGBA', size, (255, 255, 255, 255))
+            # Convert image mode to RGB (required for JPG)
+            if img.mode in ('RGBA', 'LA', 'P'):
+                # Images with transparency - use white background
+                rgb_img = Image.new('RGB', size, (255, 255, 255))
                 img_resized = img.resize(size, Image.LANCZOS)
+                if img.mode == 'P':
+                    img_resized = img_resized.convert('RGBA')
+                # Center the resized image on white background
                 position = ((size[0] - img_resized.width) // 2,
                            (size[1] - img_resized.height) // 2)
-                background.paste(img_resized, position, img_resized)
-                background.convert('RGB').save(output_path)
+                rgb_img.paste(img_resized, position, img_resized.split()[-1] if img_resized.mode == 'RGBA' else None)
+                img = rgb_img
             else:
-                # Regular images
-                img_resized = img.resize(size, Image.LANCZOS)
-                img_resized.save(output_path)
+                # Regular images - just resize and convert to RGB
+                img = img.resize(size, Image.LANCZOS)
+                if img.mode != 'RGB':
+                    img = img.convert('RGB')
+            
+            # Always save as JPG with quality 85 for optimal compression
+            img.save(output_path, 'JPEG', quality=85, optimize=True)
             print(f"Resized: {os.path.basename(input_path)} -> {os.path.basename(output_path)}")
             return True
     except Exception as e:
@@ -74,11 +81,14 @@ def main():
     processed_files = []
     for i, filename in enumerate(image_files, 1):
         input_path = os.path.join(input_dir, filename)
-        resized_path = os.path.join(resized_dir, filename)
         
-        print(f"[{i}/{len(image_files)}] Processing: {filename}")
+        # Always output as .jpg regardless of input format
+        output_filename = os.path.splitext(filename)[0] + '.jpg'
+        resized_path = os.path.join(resized_dir, output_filename)
         
-        # Step 1: Resize image to 300x300
+        print(f"[{i}/{len(image_files)}] Processing: {filename} -> {output_filename}")
+        
+        # Step 1: Resize image to 300x300 and convert to JPG
         resize_success = resize_image(input_path, resized_path)
         
         # Step 2: Remove the original file after successful resize

@@ -18,7 +18,7 @@ const portfolioDatabase = [
     "description": "co-writing, production, arranging, all engineering",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/5WCMhEBcFS5AuMNYVcCXOe",
-    "image": "images/resized/lil_kmwid.png",
+    "image": "images/resized/lil_kmwid.jpg",
     "projectType": "All Production, Selected Works - My Best Stuff, Mixing/Mastering",
     "releaseDate": "2024-07-04"
   },
@@ -29,7 +29,7 @@ const portfolioDatabase = [
     "description": "all production, all writing, all engineering",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/3uUfO1iIgATtPXrl0AvAl4",
-    "image": "images/resized/big_sfrp.png",
+    "image": "images/resized/big_sfrp.jpg",
     "projectType": "Solo Material, Mixing/Mastering",
     "releaseDate": "2020-09-30"
   },
@@ -84,7 +84,7 @@ const portfolioDatabase = [
     "description": "all production, all writing, all engineering",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/0Td9C4ZW9n9pfK03UZy9NI",
-    "image": "images/resized/lil_surfsup.png",
+    "image": "images/resized/lil_surfsup.jpg",
     "projectType": "Solo Material, Mixing/Mastering",
     "releaseDate": "2021-02-11"
   },
@@ -95,7 +95,7 @@ const portfolioDatabase = [
     "description": "all production, all writing, all engineering",
     "label": "Secret Souls",
     "url": "https://open.spotify.com/album/5FcnST5e1A5mhldYlSxd3h",
-    "image": "images/resized/lil_tmsw.png",
+    "image": "images/resized/lil_tmsw.jpg",
     "projectType": "Solo Material, Mixing/Mastering",
     "releaseDate": "2023-12-01"
   },
@@ -106,7 +106,7 @@ const portfolioDatabase = [
     "description": "all production, all writing, all engineering",
     "label": "The Retune Project",
     "url": "https://open.spotify.com/album/5MTtDjq255sriOGlWZTxOr",
-    "image": "images/resized/lil_twaasp.png",
+    "image": "images/resized/lil_twaasp.jpg",
     "projectType": "Solo Material, Mixing/Mastering",
     "releaseDate": "2024-11-29"
   },
@@ -128,7 +128,7 @@ const portfolioDatabase = [
     "description": "all production, all writing, all engineering",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/3wnXmhORctJ2LhIGZt9x31?si=-AVGCsKuQGy5rjYwwjNpIA",
-    "image": "images/resized/lil_dv1.png",
+    "image": "images/resized/lil_dv1.jpg",
     "projectType": "Solo Material, Selected Works - My Best Stuff",
     "releaseDate": "2024-08-05"
   },
@@ -139,7 +139,7 @@ const portfolioDatabase = [
     "description": "all production, all writing, all engineering",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/44UcMnRTSIJD8HgoenLFge?si=4SKBxYiZSwSiAMHA2KFxZQ",
-    "image": "images/resized/lil_dv2.png",
+    "image": "images/resized/lil_dv2.jpg",
     "projectType": "Solo Material",
     "releaseDate": "2025-02-01"
   },
@@ -150,7 +150,7 @@ const portfolioDatabase = [
     "description": "all production, co-writing, mixing",
     "label": "Friends of Friends",
     "url": "https://open.spotify.com/album/6wxsedy6XLNWY4kSG662X1?si=X_HZ823VTpyBpFb9mJprvQ",
-    "image": "images/resized/lil_ingarden.png",
+    "image": "images/resized/lil_ingarden.jpg",
     "projectType": "All Production, Mixing/Mastering",
     "releaseDate": "2025-03-25"
   },
@@ -161,7 +161,7 @@ const portfolioDatabase = [
     "description": "all production, co-writing, mixing",
     "label": "Friends of Friends",
     "url": "https://open.spotify.com/album/1GyU1akWsJvgVvVnlSfNhT",
-    "image": "images/resized/lil_wiaifw.png",
+    "image": "images/resized/lil_wiaifw.jpg",
     "projectType": "All Production, Selected Works - My Best Stuff, Mixing/Mastering",
     "releaseDate": "2024-09-06"
   },
@@ -194,7 +194,7 @@ const portfolioDatabase = [
     "description": "all production, co-mixing",
     "label": "Epidemic Sound",
     "url": "https://open.spotify.com/album/69aXkfD7bJROlPuZok3Vf3",
-    "image": "images/resized/lil_vul.png",
+    "image": "images/resized/lil_vul.jpg",
     "projectType": "All Production, Mixing/Mastering",
     "releaseDate": "2022-12-02"
   },
@@ -216,7 +216,7 @@ const portfolioDatabase = [
     "description": "co-production on several tracks",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/0EKX5jGiRYASpFvefHHZFV?si=5CKqM_W9QNK9zohNGtf74Q",
-    "image": "images/resized/lil_lntb.png",
+    "image": "images/resized/lil_lntb.jpg",
     "projectType": "Featured Production",
     "releaseDate": "2025-04-02"
   },
@@ -260,7 +260,7 @@ const portfolioDatabase = [
     "description": "mixing",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/4rebgNAR28xZmO165fUa0k?si=-OnyJ3clTlWp0qNk_v939Q",
-    "image": "images/resized/lil_indigo.png",
+    "image": "images/resized/lil_indigo.jpg",
     "projectType": "Mixing/Mastering",
     "releaseDate": "2017-07-29"
   },
@@ -271,7 +271,7 @@ const portfolioDatabase = [
     "description": "co-production on several tracks, mixing",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/5NUBbBM3Ld1ses3rLxumXX",
-    "image": "images/resized/lil_big_p.png",
+    "image": "images/resized/lil_big_p.jpg",
     "projectType": "Mixing/Mastering, Featured Production",
     "releaseDate": "2020-04-17"
   },
@@ -282,7 +282,7 @@ const portfolioDatabase = [
     "description": "mixing",
     "label": "Epidemic Sound",
     "url": "https://open.spotify.com/album/2gTFu4a8pUk8xAXOkJgZDS",
-    "image": "images/resized/lil_port.png",
+    "image": "images/resized/lil_port.jpg",
     "projectType": "Mixing/Mastering",
     "releaseDate": "2022-03-11"
   },
@@ -326,7 +326,7 @@ const portfolioDatabase = [
     "description": "co-mixing",
     "label": "Friends of Friends",
     "url": "https://open.spotify.com/album/6IuxTWLUAeTGxVwAavkBjc",
-    "image": "images/resized/lil_gravity.png",
+    "image": "images/resized/lil_gravity.jpg",
     "projectType": "Mixing/Mastering",
     "releaseDate": "2023-09-08"
   },
@@ -370,7 +370,7 @@ const portfolioDatabase = [
     "description": "co-produced several tracks, co-mixed",
     "label": "Qamp Records",
     "url": "https://open.spotify.com/album/6IKxcuT7LZNA4raa0HqFVe",
-    "image": "images/resized/qamp-lil.png",
+    "image": "images/resized/qamp-lil.jpg",
     "projectType": "Mixing/Mastering",
     "releaseDate": "2022-04-28"
   },
@@ -381,7 +381,7 @@ const portfolioDatabase = [
     "description": "bassist, vocalist, co-writer, mixing",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/58IiljQ613P9ki0Su4oCDM",
-    "image": "images/resized/lil_uhoh.png",
+    "image": "images/resized/lil_uhoh.jpg",
     "projectType": "Featured Production, Mixing/Mastering",
     "releaseDate": "2020-04-01"
   },
@@ -392,7 +392,7 @@ const portfolioDatabase = [
     "description": "co-produced track 3, mastered",
     "label": "Friends of Friends",
     "url": "https://open.spotify.com/album/6t6TluVC5DIwUYojT2p4V2",
-    "image": "images/resized/lil_holesun.png",
+    "image": "images/resized/lil_holesun.jpg",
     "projectType": "Featured Production",
     "releaseDate": "2023-05-10"
   },
@@ -403,7 +403,7 @@ const portfolioDatabase = [
     "description": "co-produced several tracks",
     "label": "Qamp Records",
     "url": "https://open.spotify.com/album/436Pv7KQh5nNoRxf0ggqJj?si=a8CXUiUySKyZ1HAWY_iFlA",
-    "image": "images/resized/lil_qamp2.png",
+    "image": "images/resized/lil_qamp2.jpg",
     "projectType": "Featured Production",
     "releaseDate": "2023-2-7"
   },
@@ -414,7 +414,7 @@ const portfolioDatabase = [
     "description": "co-produced several tracks",
     "label": "Qamp Records",
     "url": "https://open.spotify.com/album/2CcUbb48jO5z76SjGyyacM?si=RnCukQATQliu2adgnrArLQ",
-    "image": "images/resized/lil_qamp3.png",
+    "image": "images/resized/lil_qamp3.jpg",
     "projectType": "Featured Production",
     "releaseDate": "2024-04-12"
   },
@@ -425,7 +425,7 @@ const portfolioDatabase = [
     "description": "co-produced track 3",
     "label": "Friends of Friends",
     "url": "https://open.spotify.com/album/6BEKtjTbo0XR1snYmWLzng",
-    "image": "images/resized/lil_dayz.png",
+    "image": "images/resized/lil_dayz.jpg",
     "projectType": "Featured Production",
     "releaseDate": "2025-05-30"
   },
@@ -436,7 +436,7 @@ const portfolioDatabase = [
     "description": "co-produced track 13",
     "label": "Friends of Friends",
     "url": "https://open.spotify.com/album/7mQqXdV6jHbZtakUngjMH9",
-    "image": "images/resized/lil_joe1.png",
+    "image": "images/resized/lil_joe1.jpg",
     "projectType": "Featured Production",
     "releaseDate": "2024-06-07"
   },
@@ -469,7 +469,7 @@ const portfolioDatabase = [
     "description": "mastering only",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/1jGnnlOUoDrHvYpTcoQsFR?si=I_p8TBC7SUKJjPz8Lx6t9A",
-    "image": "images/resized/lil_mtrs.png",
+    "image": "images/resized/lil_mtrs.jpg",
     "projectType": "Mixing/Mastering",
     "releaseDate": "2024-01-14"
   },
@@ -480,7 +480,7 @@ const portfolioDatabase = [
     "description": "mastering only",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/1AbzAPGSxHJ8X7cvptKpsT?si=BEy4rQYMSOi1aCiixyzH0w",
-    "image": "images/resized/nt_outside.png",
+    "image": "images/resized/nt_outside.jpg",
     "projectType": "Mixing/Mastering",
     "releaseDate": "2025-09-23"
   },
@@ -491,7 +491,7 @@ const portfolioDatabase = [
     "description": "mastering only",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/6SRhhxBwnybHSsphxbquxm?si=uRpLMbImSpavjRaYQtFWKw",
-    "image": "images/resized/lil_shrt.png",
+    "image": "images/resized/lil_shrt.jpg",
     "projectType": "Mixing/Mastering",
     "releaseDate": "2017-01-15"
   },
@@ -502,7 +502,7 @@ const portfolioDatabase = [
     "description": "mastering, bass on tracks 1 and 6",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/1v30NYBMkUl9EO9YRXpZ7A?si=Ms_s3cw4TF6O3H0cJSfHcg",
-    "image": "images/resized/lil_zsnw.png",
+    "image": "images/resized/lil_zsnw.jpg",
     "projectType": "Mixing/Mastering",
     "releaseDate": "2025-12-21"
   },
@@ -513,7 +513,7 @@ const portfolioDatabase = [
     "description": "produced track 3",
     "label": "Chilled Chilla Records",
     "url": "https://open.spotify.com/album/6otSL0EycOt3eZrTrBFn1I?si=wDwwdLPOR-SuwwdDDHP1Zw",
-    "image": "images/resized/lil_mx.png",
+    "image": "images/resized/lil_mx.jpg",
     "projectType": "Featured Production",
     "releaseDate": "2025-12-05"
   },
@@ -524,7 +524,7 @@ const portfolioDatabase = [
     "description": "produced track 9",
     "label": "Lunora Records",
     "url": "https://open.spotify.com/album/5OXxpnL4EZz8pYiL86EVfA?si=jmBswBvVSnGbEPL68nJwKw",
-    "image": "images/resized/lil_wh.png",
+    "image": "images/resized/lil_wh.jpg",
     "projectType": "Featured Production",
     "releaseDate": "2025-12-05"
   }
