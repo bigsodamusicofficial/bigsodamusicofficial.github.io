@@ -95,13 +95,14 @@ def convert_csv_to_json(csv_path, output_path=None):
     # Categories will appear in this order. Any categories not listed here
     # will be sorted alphabetically and appended to the end.
     # Note: "ALL" is a special filter (not from CSV) that shows all projects
+    # Organized by involvement level: highest to lowest creative control
     preferred_order = [
         "ALL",
         "Selected Works",
-        "Mixing/Mastering",
+        "Solo Material",
         "Principal Production",
         "Featured Production",
-        "Solo Work",
+        "Mixing/Mastering"
     ]
     
     # Dynamically generate project type order from collected types

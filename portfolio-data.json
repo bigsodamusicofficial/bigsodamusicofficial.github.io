@@ -30,7 +30,7 @@
       "label": "Self-Released",
       "url": "https://open.spotify.com/album/3uUfO1iIgATtPXrl0AvAl4",
       "image": "images/resized/big_sfrp.jpg",
-      "projectType": "Solo Work, Mixing/Mastering",
+      "projectType": "Solo Material, Mixing/Mastering",
       "releaseDate": "2020-09-30"
     },
     {
@@ -41,7 +41,7 @@
       "label": "Self-Released",
       "url": "https://open.spotify.com/album/1dohDK6HhYhQ6vnEZJe5QI",
       "image": "images/resized/lil_big_big_big.jpg",
-      "projectType": "Solo Work, Mixing/Mastering",
+      "projectType": "Solo Material, Mixing/Mastering",
       "releaseDate": "2020-01-07"
     },
     {
@@ -52,7 +52,7 @@
       "label": "Self-Released",
       "url": "https://open.spotify.com/album/3LEkVZ6suLHIzUs7o6Cdwb",
       "image": "images/resized/big_apy.jpg",
-      "projectType": "Solo Work, Mixing/Mastering",
+      "projectType": "Solo Material, Mixing/Mastering",
       "releaseDate": "2018-11-29"
     },
     {
@@ -63,7 +63,7 @@
       "label": "Self-Released",
       "url": "https://open.spotify.com/album/4vKCHkXO7pu6H9kVb9aECa",
       "image": "images/resized/lil_sugarhead.jpg",
-      "projectType": "Solo Work, Mixing/Mastering",
+      "projectType": "Solo Material, Mixing/Mastering",
       "releaseDate": "2017-12-12"
     },
     {
@@ -74,7 +74,7 @@
       "label": "Self-Released, bandcamp only",
       "url": "https://therealbigsoda.bandcamp.com/album/soda-de-beber",
       "image": "images/resized/big_beber.jpg",
-      "projectType": "Solo Work",
+      "projectType": "Solo Material",
       "releaseDate": "2019-05-14"
     },
     {
@@ -85,7 +85,7 @@
       "label": "Self-Released",
       "url": "https://open.spotify.com/album/0Td9C4ZW9n9pfK03UZy9NI",
       "image": "images/resized/lil_surfsup.jpg",
-      "projectType": "Solo Work, Mixing/Mastering",
+      "projectType": "Solo Material, Mixing/Mastering",
       "releaseDate": "2021-02-11"
     },
     {
@@ -96,7 +96,7 @@
       "label": "Secret Souls",
       "url": "https://open.spotify.com/album/5FcnST5e1A5mhldYlSxd3h",
       "image": "images/resized/lil_tmsw.jpg",
-      "projectType": "Solo Work, Mixing/Mastering",
+      "projectType": "Solo Material, Mixing/Mastering",
       "releaseDate": "2023-12-01"
     },
     {
@@ -107,7 +107,7 @@
       "label": "The Retune Project",
       "url": "https://open.spotify.com/album/5MTtDjq255sriOGlWZTxOr",
       "image": "images/resized/lil_twaasp.jpg",
-      "projectType": "Solo Work, Mixing/Mastering",
+      "projectType": "Solo Material, Mixing/Mastering",
       "releaseDate": "2024-11-29"
     },
     {
@@ -118,7 +118,7 @@
       "label": "Aviary Bridge",
       "url": "https://open.spotify.com/album/3GqZptYaHEOc1Z6lu0hRgd?si=z1l4CSmsSXOC4xtsEy6FbA",
       "image": "images/resized/lushones.jpg",
-      "projectType": "Solo Work, Selected Works, Mixing/Mastering",
+      "projectType": "Solo Material, Selected Works, Mixing/Mastering",
       "releaseDate": "2025-10-07"
     },
     {
@@ -129,7 +129,7 @@
       "label": "Self-Released",
       "url": "https://open.spotify.com/album/3wnXmhORctJ2LhIGZt9x31?si=-AVGCsKuQGy5rjYwwjNpIA",
       "image": "images/resized/lil_dv1.jpg",
-      "projectType": "Solo Work, Selected Works",
+      "projectType": "Solo Material, Selected Works",
       "releaseDate": "2024-08-05"
     },
     {
@@ -140,7 +140,7 @@
       "label": "Self-Released",
       "url": "https://open.spotify.com/album/44UcMnRTSIJD8HgoenLFge?si=4SKBxYiZSwSiAMHA2KFxZQ",
       "image": "images/resized/lil_dv2.jpg",
-      "projectType": "Solo Work",
+      "projectType": "Solo Material",
       "releaseDate": "2025-02-01"
     },
     {
@@ -532,9 +532,9 @@
   "projectTypeOrder": [
     "ALL",
     "Selected Works",
-    "Mixing/Mastering",
+    "Solo Material",
     "Principal Production",
     "Featured Production",
-    "Solo Work"
+    "Mixing/Mastering"
   ]
 }
