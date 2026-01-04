@@ -4,66 +4,66 @@ const portfolioDatabase = [
     "id": "is_our_children_learning",
     "artistName": "Is Our Children Learning",
     "projectName": "Is Our Children Learning",
-    "description": "co-writing, production, arranging",
+    "description": "co-writing, production, arranging, all engineering",
     "label": "Epidemic Sound",
     "url": "https://open.spotify.com/album/5zhcFEb2pttIfOzgKmxW6Q?si=gyx_3k-DRjaJ23QEq1CcZw",
     "image": "images/resized/iocl_lil.jpg",
-    "projectType": "Collaborative Projects",
+    "projectType": "All Production, Mixing/Mastering",
     "releaseDate": "2022-09-30"
   },
   {
     "id": "kill_me_while_i'm_driving",
     "artistName": "Is Our Children Learning",
     "projectName": "Kill Me While I'm Driving",
-    "description": "co-writing, production, arranging",
+    "description": "co-writing, production, arranging, all engineering",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/5WCMhEBcFS5AuMNYVcCXOe",
     "image": "images/resized/lil_kmwid.png",
-    "projectType": "Collaborative Projects, Selected Works - My Best Stuff",
+    "projectType": "All Production, Selected Works - My Best Stuff, Mixing/Mastering",
     "releaseDate": "2024-07-04"
   },
   {
     "id": "songs_for_rich_people",
     "artistName": "Big Soda",
     "projectName": "Songs for Rich People!",
-    "description": "all production, all writing",
+    "description": "all production, all writing, all engineering",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/3uUfO1iIgATtPXrl0AvAl4",
     "image": "images/resized/big_sfrp.png",
-    "projectType": "Solo Material",
+    "projectType": "Solo Material, Mixing/Mastering",
     "releaseDate": "2020-09-30"
   },
   {
     "id": "big_soda",
     "artistName": "Big Soda",
     "projectName": "Big Soda!",
-    "description": "all production, all writing",
+    "description": "all production, all writing, all engineering",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/1dohDK6HhYhQ6vnEZJe5QI",
     "image": "images/resized/lil_big_big_big.jpg",
-    "projectType": "Solo Material",
+    "projectType": "Solo Material, Mixing/Mastering",
     "releaseDate": "2020-01-07"
   },
   {
     "id": "aw,_poor_you",
     "artistName": "Big Soda",
     "projectName": "Aw, Poor You!",
-    "description": "all production, all writing",
+    "description": "all production, all writing, all engineering",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/3LEkVZ6suLHIzUs7o6Cdwb",
     "image": "images/resized/big_apy.jpg",
-    "projectType": "Solo Material",
+    "projectType": "Solo Material, Mixing/Mastering",
     "releaseDate": "2018-11-29"
   },
   {
     "id": "sugarhead",
     "artistName": "Big Soda",
     "projectName": "Sugarhead!",
-    "description": "all production, all writing",
+    "description": "all production, all writing, all engineering",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/4vKCHkXO7pu6H9kVb9aECa",
     "image": "images/resized/lil_sugarhead.jpg",
-    "projectType": "Solo Material",
+    "projectType": "Solo Material, Mixing/Mastering",
     "releaseDate": "2017-12-12"
   },
   {
@@ -74,58 +74,58 @@ const portfolioDatabase = [
     "label": "Self-Released, bandcamp only",
     "url": "https://therealbigsoda.bandcamp.com/album/soda-de-beber",
     "image": "images/resized/big_beber.jpg",
-    "projectType": "Collaborative Projects",
+    "projectType": "Solo Material",
     "releaseDate": "2019-05-14"
   },
   {
     "id": "surf's_up",
     "artistName": "Surfer Dave",
     "projectName": "Surf's Up!",
-    "description": "all production, all writing",
+    "description": "all production, all writing, all engineering",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/0Td9C4ZW9n9pfK03UZy9NI",
     "image": "images/resized/lil_surfsup.png",
-    "projectType": "Solo Material",
+    "projectType": "Solo Material, Mixing/Mastering",
     "releaseDate": "2021-02-11"
   },
   {
     "id": "take_me_somewhere_warm",
     "artistName": "Surfer Dave",
     "projectName": "Take Me Somewhere Warm",
-    "description": "all production, all writing",
+    "description": "all production, all writing, all engineering",
     "label": "Secret Souls",
     "url": "https://open.spotify.com/album/5FcnST5e1A5mhldYlSxd3h",
     "image": "images/resized/lil_tmsw.png",
-    "projectType": "Solo Material",
+    "projectType": "Solo Material, Mixing/Mastering",
     "releaseDate": "2023-12-01"
   },
   {
     "id": "the_waves_are_a_scary_place",
     "artistName": "Surfer Dave",
     "projectName": "the waves are a scary place",
-    "description": "all production, all writing",
+    "description": "all production, all writing, all engineering",
     "label": "The Retune Project",
     "url": "https://open.spotify.com/album/5MTtDjq255sriOGlWZTxOr",
     "image": "images/resized/lil_twaasp.png",
-    "projectType": "Solo Material, Selected Works - My Best Stuff",
+    "projectType": "Solo Material, Mixing/Mastering",
     "releaseDate": "2024-11-29"
   },
   {
     "id": "lush_ones",
     "artistName": "Surfer Dave",
     "projectName": "Lush Ones",
-    "description": "all production, all writing",
+    "description": "all production, all writing, all engineering",
     "label": "Aviary Bridge",
     "url": "https://open.spotify.com/album/3GqZptYaHEOc1Z6lu0hRgd?si=z1l4CSmsSXOC4xtsEy6FbA",
     "image": "images/resized/lushones.jpg",
-    "projectType": "Solo Material, Selected Works - My Best Stuff",
+    "projectType": "Solo Material, Selected Works - My Best Stuff, Mixing/Mastering",
     "releaseDate": "2025-10-07"
   },
   {
     "id": "dreams,_vol_1",
     "artistName": "poochdreams",
     "projectName": "Dreams, Vol 1",
-    "description": "all production, all writing",
+    "description": "all production, all writing, all engineering",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/3wnXmhORctJ2LhIGZt9x31?si=-AVGCsKuQGy5rjYwwjNpIA",
     "image": "images/resized/lil_dv1.png",
@@ -136,7 +136,7 @@ const portfolioDatabase = [
     "id": "dreams,_vol_2",
     "artistName": "poochdreams",
     "projectName": "Dreams, Vol 2",
-    "description": "all production, all writing",
+    "description": "all production, all writing, all engineering",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/44UcMnRTSIJD8HgoenLFge?si=4SKBxYiZSwSiAMHA2KFxZQ",
     "image": "images/resized/lil_dv2.png",
@@ -151,7 +151,7 @@ const portfolioDatabase = [
     "label": "Friends of Friends",
     "url": "https://open.spotify.com/album/6wxsedy6XLNWY4kSG662X1?si=X_HZ823VTpyBpFb9mJprvQ",
     "image": "images/resized/lil_ingarden.png",
-    "projectType": "Collaborative Projects",
+    "projectType": "All Production, Mixing/Mastering",
     "releaseDate": "2025-03-25"
   },
   {
@@ -162,7 +162,7 @@ const portfolioDatabase = [
     "label": "Friends of Friends",
     "url": "https://open.spotify.com/album/1GyU1akWsJvgVvVnlSfNhT",
     "image": "images/resized/lil_wiaifw.png",
-    "projectType": "Collaborative Projects, Selected Works - My Best Stuff",
+    "projectType": "All Production, Selected Works - My Best Stuff, Mixing/Mastering",
     "releaseDate": "2024-09-06"
   },
   {
@@ -173,7 +173,7 @@ const portfolioDatabase = [
     "label": "Friends of Friends",
     "url": "https://open.spotify.com/album/4HqDcFC4QlVCzBnrADvcpz",
     "image": "images/resized/crii-small.jpeg",
-    "projectType": "Collaborative Projects",
+    "projectType": "All Production, Mixing/Mastering",
     "releaseDate": "2022-06-10"
   },
   {
@@ -184,7 +184,7 @@ const portfolioDatabase = [
     "label": "Epidemic Sound",
     "url": "https://open.spotify.com/album/7hyDQX8jSIJTgfyAZGtvHJ",
     "image": "images/resized/quo-small.jpg",
-    "projectType": "Collaborative Projects",
+    "projectType": "All Production, Mixing/Mastering",
     "releaseDate": "2022-06-10"
   },
   {
@@ -195,7 +195,7 @@ const portfolioDatabase = [
     "label": "Epidemic Sound",
     "url": "https://open.spotify.com/album/69aXkfD7bJROlPuZok3Vf3",
     "image": "images/resized/lil_vul.png",
-    "projectType": "Collaborative Projects",
+    "projectType": "All Production, Mixing/Mastering",
     "releaseDate": "2022-12-02"
   },
   {
@@ -206,7 +206,7 @@ const portfolioDatabase = [
     "label": "Club Queen Records",
     "url": "https://open.spotify.com/album/6hMnjP2qa0bOHAX8XDKANe",
     "image": "images/resized/big_lsfe.jpg",
-    "projectType": "Collaborative Projects",
+    "projectType": "All Production, Mixing/Mastering",
     "releaseDate": "2020-10-11"
   },
   {
@@ -228,7 +228,7 @@ const portfolioDatabase = [
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/4XoO1ZggmfsKtGIji1VO5u",
     "image": "images/resized/lil_fn_2.jpg",
-    "projectType": "Collaborative Projects",
+    "projectType": "All Production, Mixing/Mastering",
     "releaseDate": "2020-07-09"
   },
   {
@@ -239,7 +239,7 @@ const portfolioDatabase = [
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/2dkzAOT4QdPQSigDHHV6JB",
     "image": "images/resized/lil_dancing.jpg",
-    "projectType": "Collaborative Projects",
+    "projectType": "All Production, Mixing/Mastering",
     "releaseDate": "2019-07-12"
   },
   {
@@ -250,8 +250,19 @@ const portfolioDatabase = [
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/0e0Z0HHjt8snpCbL7gVxOg",
     "image": "images/resized/lil_sst.jpg",
-    "projectType": "Collaborative Projects",
+    "projectType": "All Production, Mixing/Mastering",
     "releaseDate": "2018-10-19"
+  },
+  {
+    "id": "indigo_blues",
+    "artistName": "Casey Cope",
+    "projectName": "Indigo Blues",
+    "description": "mixing",
+    "label": "Self-Released",
+    "url": "https://open.spotify.com/album/4rebgNAR28xZmO165fUa0k?si=-OnyJ3clTlWp0qNk_v939Q",
+    "image": "images/resized/lil_indigo.png",
+    "projectType": "Mixing/Mastering",
+    "releaseDate": "2017-07-29"
   },
   {
     "id": "getting_high_painting_pictures",
@@ -261,7 +272,7 @@ const portfolioDatabase = [
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/5NUBbBM3Ld1ses3rLxumXX",
     "image": "images/resized/lil_big_p.png",
-    "projectType": "Mixing/Engineering",
+    "projectType": "Mixing/Mastering, Featured Production",
     "releaseDate": "2020-04-17"
   },
   {
@@ -272,7 +283,7 @@ const portfolioDatabase = [
     "label": "Epidemic Sound",
     "url": "https://open.spotify.com/album/2gTFu4a8pUk8xAXOkJgZDS",
     "image": "images/resized/lil_port.png",
-    "projectType": "Mixing/Engineering",
+    "projectType": "Mixing/Mastering",
     "releaseDate": "2022-03-11"
   },
   {
@@ -283,7 +294,7 @@ const portfolioDatabase = [
     "label": "Epidemic Sound",
     "url": "https://open.spotify.com/album/3SHsxalFQUg2BGdlHgtwk2?si=kGbTebU7T-GGsx140qcHSg",
     "image": "images/resized/lil_hang.jpg",
-    "projectType": "Mixing/Engineering",
+    "projectType": "Mixing/Mastering",
     "releaseDate": "2021-03-21"
   },
   {
@@ -294,7 +305,7 @@ const portfolioDatabase = [
     "label": "Effortless Audio",
     "url": "https://open.spotify.com/album/4MXEml4edHu47xP44pMhQh",
     "image": "images/resized/big_eat.jpg",
-    "projectType": "Mixing/Engineering",
+    "projectType": "Mixing/Mastering",
     "releaseDate": "2019-05-31"
   },
   {
@@ -305,7 +316,7 @@ const portfolioDatabase = [
     "label": "Effortless Audio",
     "url": "https://open.spotify.com/album/0nLyUS7ODPQ3PfjXB4XwV0",
     "image": "images/resized/lil_femboy.jpg",
-    "projectType": "Mixing/Engineering",
+    "projectType": "Mixing/Mastering, Selected Works - My Best Stuff",
     "releaseDate": "2018-10-15"
   },
   {
@@ -316,7 +327,7 @@ const portfolioDatabase = [
     "label": "Friends of Friends",
     "url": "https://open.spotify.com/album/6IuxTWLUAeTGxVwAavkBjc",
     "image": "images/resized/lil_gravity.png",
-    "projectType": "Mixing/Engineering",
+    "projectType": "Mixing/Mastering",
     "releaseDate": "2023-09-08"
   },
   {
@@ -327,7 +338,7 @@ const portfolioDatabase = [
     "label": "Friends of Friends",
     "url": "https://open.spotify.com/album/6vSDLoq9qgSoEHKJm9tSLF",
     "image": "images/resized/lil_homie.jpg",
-    "projectType": "Mixing/Engineering",
+    "projectType": "Mixing/Mastering",
     "releaseDate": "2020-03-27"
   },
   {
@@ -338,7 +349,7 @@ const portfolioDatabase = [
     "label": "Friends of Friends",
     "url": "https://open.spotify.com/album/3gro4alLqMrRFroQO5jAqu",
     "image": "images/resized/lil_bloom.jpg",
-    "projectType": "Mixing/Engineering",
+    "projectType": "Mixing/Mastering",
     "releaseDate": "2018-08-17"
   },
   {
@@ -349,7 +360,7 @@ const portfolioDatabase = [
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/61iNqab7vq1ZEKf9eAYiKU?si=1T-b7rMRTWuc7wuINHT1QQ",
     "image": "images/resized/big_monk.jpg",
-    "projectType": "Mixing/Engineering",
+    "projectType": "All Production, Mixing/Mastering, Selected Works - My Best Stuff",
     "releaseDate": "2021-02-11"
   },
   {
@@ -360,18 +371,18 @@ const portfolioDatabase = [
     "label": "Qamp Records",
     "url": "https://open.spotify.com/album/6IKxcuT7LZNA4raa0HqFVe",
     "image": "images/resized/qamp-lil.png",
-    "projectType": "Mixing/Engineering",
+    "projectType": "Mixing/Mastering",
     "releaseDate": "2022-04-28"
   },
   {
     "id": "uh_oh",
     "artistName": "Eat the World",
     "projectName": "Uh Oh!",
-    "description": "bassist, vocalist, co-writer",
+    "description": "bassist, vocalist, co-writer, mixing",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/58IiljQ613P9ki0Su4oCDM",
     "image": "images/resized/lil_uhoh.png",
-    "projectType": "Collaborative Projects",
+    "projectType": "Featured Production, Mixing/Mastering",
     "releaseDate": "2020-04-01"
   },
   {
@@ -455,42 +466,76 @@ const portfolioDatabase = [
     "id": "magic_trick_rap_show",
     "artistName": "Kid Wolf",
     "projectName": "Magic Trick Rap Show",
-    "description": "mastering",
+    "description": "mastering only",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/1jGnnlOUoDrHvYpTcoQsFR?si=I_p8TBC7SUKJjPz8Lx6t9A",
     "image": "images/resized/lil_mtrs.png",
-    "projectType": "Mixing/Engineering",
+    "projectType": "Mixing/Mastering",
     "releaseDate": "2024-01-14"
   },
   {
     "id": "nt_outside",
     "artistName": "Nick Tasker",
     "projectName": "Outside",
-    "description": "mastering",
+    "description": "mastering only",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/1AbzAPGSxHJ8X7cvptKpsT?si=BEy4rQYMSOi1aCiixyzH0w",
     "image": "images/resized/nt_outside.png",
-    "projectType": "Mixing/Engineering",
+    "projectType": "Mixing/Mastering",
     "releaseDate": "2025-09-23"
+  },
+  {
+    "id": "blck_tee_shrt",
+    "artistName": "Aaron Rizzo",
+    "projectName": "Blck Tee Shrt",
+    "description": "mastering only",
+    "label": "Self-Released",
+    "url": "https://open.spotify.com/album/6SRhhxBwnybHSsphxbquxm?si=uRpLMbImSpavjRaYQtFWKw",
+    "image": "images/resized/lil_shrt.png",
+    "projectType": "Mixing/Mastering",
+    "releaseDate": "2017-01-15"
   },
   {
     "id": "zack_sanders_calligraphy",
     "artistName": "Zack Sanders",
     "projectName": "The Calligraphy of New Wheat",
-    "description": "mastering",
+    "description": "mastering, bass on tracks 1 and 6",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/1v30NYBMkUl9EO9YRXpZ7A?si=Ms_s3cw4TF6O3H0cJSfHcg",
     "image": "images/resized/lil_zsnw.png",
-    "projectType": "Mixing/Engineering",
+    "projectType": "Mixing/Mastering",
     "releaseDate": "2025-12-21"
+  },
+  {
+    "id": "magic_xmas",
+    "artistName": "Various Artists",
+    "projectName": "A Magic Christmas",
+    "description": "produced track 3",
+    "label": "Chilled Chilla Records",
+    "url": "https://open.spotify.com/album/6otSL0EycOt3eZrTrBFn1I?si=wDwwdLPOR-SuwwdDDHP1Zw",
+    "image": "images/resized/lil_mx.png",
+    "projectType": "Featured Production",
+    "releaseDate": "2025-12-05"
+  },
+  {
+    "id": "winter_hush",
+    "artistName": "Various Artists",
+    "projectName": "Winter Hush",
+    "description": "produced track 9",
+    "label": "Lunora Records",
+    "url": "https://open.spotify.com/album/5OXxpnL4EZz8pYiL86EVfA?si=jmBswBvVSnGbEPL68nJwKw",
+    "image": "images/resized/lil_wh.png",
+    "projectType": "Featured Production",
+    "releaseDate": "2025-12-05"
   }
 ];
 
 // Define the project type order (for consistent display)
 const projectTypeOrder = [
+  "ALL",
   "Selected Works - My Best Stuff",
-  "Collaborative Projects",
-  "Mixing/Engineering",
+  "Mixing/Mastering",
+  "All Production",
   "Solo Material",
   "Featured Production"
 ];

@@ -6,10 +6,12 @@ This script converts a CSV file containing project data into the portfolio-data.
 format used by the portfolio website.
 
 Expected CSV format:
-id,artistName,projectName,description,url,image,projectType,releaseDate
+id,artistName,projectName,description,label,url,image,projectType,releaseDate
+
+Note: projectType can contain comma-separated values (e.g., "Solo Material, Mixing/Engineering, Mastering")
 
 Example:
-big_apy,Josh Jacobs,Big Apy,Portfolio item featuring Big Apy,https://google.com/search?q=big_apy,images/big_apy.jpg,Music Production,2023-06-15
+big_apy,Josh Jacobs,Big Apy,Portfolio item featuring Big Apy,Self-Released,https://google.com/search?q=big_apy,images/big_apy.jpg,Music Production,2023-06-15
 """
 
 import csv
@@ -47,7 +49,7 @@ def convert_csv_to_json(csv_path, output_path=None):
             reader = csv.DictReader(csv_file)
             
             # Check required columns
-            required_columns = ['id', 'artistName', 'projectName', 'description',
+            required_columns = ['id', 'artistName', 'projectName', 'description', 'label',
                               'url', 'image', 'projectType', 'releaseDate']
             
             if not all(col in reader.fieldnames for col in required_columns):
@@ -66,8 +68,10 @@ def convert_csv_to_json(csv_path, output_path=None):
                 if not validate_date(row['releaseDate']):
                     print(f"Warning: Row {row_num} has invalid date format. Expected YYYY-MM-DD, got: {row['releaseDate']}")
                 
-                # Add project type to set
-                project_types.add(row['projectType'])
+                # Add project types to set (handle comma-separated values)
+                types = [t.strip() for t in row['projectType'].split(',')]
+                for project_type in types:
+                    project_types.add(project_type)
                 
                 # Add to portfolio items
                 portfolio_items.append({
@@ -87,23 +91,35 @@ def convert_csv_to_json(csv_path, output_path=None):
         return False
     
     
-    project_type_order = [
-      "Selected Works - My Best Stuff",
-      "Collaborative Projects",
-      "Mixing/Engineering",
-      "Solo Material",
-      "Featured Production"
+    # Define preferred order for project types
+    # Categories will appear in this order. Any categories not listed here
+    # will be sorted alphabetically and appended to the end.
+    # Note: "ALL" is a special filter (not from CSV) that shows all projects
+    preferred_order = [
+        "ALL",
+        "Selected Works - My Best Stuff",
+        "Mixing/Mastering",
+        "All Production",
+        "Solo Material",
+        "Featured Production",
     ]
-        #"Is Our Children Learning",
-        #"Big Soda",
-        #"Surfer Dave",
-        #"poochdreams",
-        #"as primary producer",
-        #"as co-producer",
-        #"as mixer/engineer",
-        #"as featured producer",
-        #"as featured musician",
-      #]#list(project_types)#sorted(list(project_types))
+    
+    # Dynamically generate project type order from collected types
+    project_type_order = []
+    remaining_types = set(project_types)
+    
+    # Add categories in preferred order if they exist
+    for category in preferred_order:
+        if category == "ALL":
+            # "ALL" is a special filter, always include it
+            project_type_order.append(category)
+        elif category in remaining_types:
+            project_type_order.append(category)
+            remaining_types.remove(category)
+    
+    # Add any remaining categories alphabetically
+    if remaining_types:
+        project_type_order.extend(sorted(list(remaining_types)))
     
     # Create final structure with both portfolio items and project type order
     portfolio_data = {

@@ -145,6 +145,18 @@
                 font-size: 24px;
             }
             
+            #instructions {
+                position: absolute;
+                top: 70px; /* Move down a bit more on mobile */
+                left: 10px;
+                right: 10px;
+                max-width: calc(100% - 20px);
+                background-color: rgba(0, 0, 0, 0.8);
+                padding: 10px;
+                font-size: 14px;
+                z-index: 20;
+                border-radius: 5px;
+            }
             
             /* Add space at top of content on mobile - but not too much */
             #content-wrapper {
@@ -195,15 +207,13 @@
             padding: 0;
         }
         #instructions {
-            position: fixed;
-            top: 70px;
-            right: 20px;
+            position: absolute;
+            top: 60px;
+            left: 20px;
             max-width: 300px;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.6);
             padding: 15px;
-            border-radius: 8px;
-            backdrop-filter: blur(5px);
-            z-index: 1000;
+            border-radius: 5px;
         }
         #notification {
             position: fixed;
@@ -238,73 +248,11 @@
         #footer span {
             color: #aaa;
         }
-        
-        /* Filter buttons */
-        #filter-buttons {
-            position: fixed;
-            top: 70px;
-            left: 20px;
-            z-index: 1000;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            max-width: 700px;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 15px;
-            border-radius: 8px;
-            backdrop-filter: blur(5px);
-        }
-        
-        .filter-btn {
-            padding: 8px 16px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: #fff;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-        
-        .filter-btn:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.5);
-        }
-        
-        .filter-btn.active {
-            background-color: rgba(138, 43, 226, 0.8);
-            border-color: rgba(138, 43, 226, 1);
-        }
-        
-        @media (max-width: 768px) {
-            #filter-buttons {
-                top: 60px;
-                left: 10px;
-                right: 10px;
-                max-width: calc(100% - 20px);
-            }
-            
-            .filter-btn {
-                font-size: 12px;
-                padding: 6px 12px;
-            }
-            
-            #instructions {
-                top: 140px;
-                right: 10px;
-                left: 10px;
-                max-width: calc(100% - 20px);
-            }
-        }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>Josh Jacobs - Portfolio</h1>
-    </div>
-    <div id="filter-buttons">
-        <!-- Filter buttons will be generated dynamically -->
     </div>
     <div id="notification">Status message will appear here</div>
     <div id="instructions">
@@ -417,43 +365,9 @@
             createCubes();
         }
         
-        // Create cubes for all portfolio items (one cube per project, no duplicates)
+        // Create cubes for all portfolio items, grouped by project type
         function createCubes() {
             const textureLoader = new THREE.TextureLoader();
-            
-            // Generate filter buttons dynamically from projectTypeOrder
-            // (includes "ALL" and all category buttons in the order defined in the Python script)
-            const filterButtonsContainer = document.getElementById('filter-buttons');
-            projectTypeOrder.forEach(type => {
-                const btn = document.createElement('button');
-                btn.className = 'filter-btn';
-                btn.setAttribute('data-filter', type);
-                btn.textContent = type;
-                filterButtonsContainer.appendChild(btn);
-            });
-            
-            // Add click handlers to filter buttons
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Get filter value
-                    const filter = this.getAttribute('data-filter');
-                    
-                    // Filter cubes
-                    filterCubes(filter);
-                });
-            });
-            
-            // Set default filter to "Selected Works - My Best Stuff"
-            const defaultFilter = "Selected Works - My Best Stuff";
-            const defaultButton = document.querySelector(`[data-filter="${defaultFilter}"]`);
-            if (defaultButton) {
-                defaultButton.classList.add('active');
-            }
             
             // Set responsive values based on screen width
             let cubeSize, spacing, itemsPerRow;
@@ -493,23 +407,89 @@
             // Calculate initial values
             calculateResponsiveValues();
             
-            // Create a unique list of projects (no duplicates)
-            const uniqueProjects = portfolioDatabase;
+            const baseGroupSpacing = 1.0;   // Base spacing between different project types
             
-            // Sort by release date (newest first) for the default "ALL" view
-            uniqueProjects.sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate));
+            // Function to create a text label for a group
+            function createGroupLabel(text, position) {
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.width = 512;  // Wider canvas for group headers
+                canvas.height = 64;
+                
+                // Draw background
+                context.fillStyle = 'rgba(0, 0, 0, 0.7)';
+                context.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw text
+                context.fillStyle = '#ffffff';
+                context.font = 'bold 32px Arial';
+                context.textAlign = 'center';
+                context.fillText(text, canvas.width / 2, 42);
+                
+                // Create texture and material
+                const texture = new THREE.CanvasTexture(canvas);
+                const material = new THREE.MeshBasicMaterial({ 
+                    map: texture,
+                    transparent: true,
+                    depthWrite: false
+                });
+                
+                // Create mesh - wider than regular labels
+                const geometry = new THREE.PlaneGeometry(12, 1.5);
+                const label = new THREE.Mesh(geometry, material);
+                label.position.copy(position);
+                
+                // Add to scene
+                scene.add(label);
+                return label;
+            }
+
             
-            // Calculate grid dimensions
-            const totalItems = uniqueProjects.length;
-            const rows = Math.ceil(totalItems / itemsPerRow);
+            // Sort items by project type according to projectTypeOrder
+            // Within each project type, sort by release date (newest first)
+            const groupedItems = {};
+            projectTypeOrder.forEach(type => {
+                // Initialize empty array for this project type
+                groupedItems[type] = [];
+                
+                // For each item in the database
+                portfolioDatabase.forEach(item => {
+                    // Get project types as an array (split by comma if it contains commas)
+                    const itemTypes = item.projectType.includes(',') 
+                        ? item.projectType.split(',').map(t => t.trim()) 
+                        : [item.projectType.trim()];
+                    
+                    // If this item belongs in the current category, add it
+                    if (itemTypes.includes(type)) {
+                        groupedItems[type].push(item);
+                    }
+                });
+                
+                // Sort by release date (newest first)
+                groupedItems[type].sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate));
+            });
             
-            // Calculate height needed for all items with padding
-            const totalGridHeight = rows * spacing * 10;
+            // Calculate total needed space
+            let totalVerticalSpace = 0;
+            let maxRows = 0;
             
-            // Set a generous minimum height
+            projectTypeOrder.forEach(type => {
+                const items = groupedItems[type];
+                if (items.length > 0) {
+                    const rows = Math.ceil(items.length / itemsPerRow);
+                    totalVerticalSpace += rows * spacing;
+                    totalVerticalSpace += baseGroupSpacing;
+                    maxRows += rows;
+                }
+            });
+            
+            // Calculate height needed for all items with MUCH more padding
+            const totalGridHeight = totalVerticalSpace * 10; // Much higher multiplier
+            
+            // Set a very generous minimum height - at least 3x the window height plus calculated space
             const canvasMinHeight = Math.max(window.innerHeight * 3, totalGridHeight * 4);
             
-            // Create a tall scrollable space for all content
+            // Create a very tall scrollable space for all content
             document.getElementById('content-wrapper').style.minHeight = `${canvasMinHeight}px`;
             
             // Add extra padding at the bottom of the document
@@ -521,143 +501,89 @@
             bodyPadding.style.zIndex = '-2';
             document.body.appendChild(bodyPadding);
             
-            // Starting position - lower to avoid overlapping with filter buttons
-            let currentYPosition = window.innerWidth < 768 ? -5 : 0;
+            // Track vertical position for each group
+            let currentYPosition = 10; // Default starting position
             
-            // Track loaded cubes for initial filter
-            let loadedCubeCount = 0;
-            const totalCubes = uniqueProjects.length;
-            
-            // Create cubes for each unique project
-            uniqueProjects.forEach((item, index) => {
-                const row = Math.floor(index / itemsPerRow);
-                const col = index % itemsPerRow;
-                
-                // Determine if this is the last row and has fewer items
-                const isLastRowWithFewerItems = (row === Math.floor((totalItems - 1) / itemsPerRow)) && 
-                                                 (totalItems % itemsPerRow !== 0);
-                                                 
-                // Calculate how many items are in this row
-                const itemsInThisRow = isLastRowWithFewerItems ? (totalItems % itemsPerRow) : itemsPerRow;
-                
-                // Adjust the offset for centering in last row if needed
-                const rowOffset = isLastRowWithFewerItems ? (itemsPerRow - itemsInThisRow) / 2 : 0;
-                
-                // Calculate position with the adjusted offset
-                const xPos = (col + rowOffset - (itemsPerRow - 1) / 2) * spacing;
-                const yPos = currentYPosition - (row * spacing);
-                
-                textureLoader.load(
-                    item.image,
-                    function(texture) {
-                        // Create materials with the texture
-                        const materials = Array(6).fill().map(() =>
-                            new THREE.MeshStandardMaterial({
-                                map: texture,
-                                emissive: new THREE.Color(0x000000),
-                                emissiveIntensity: 1
-                            })
-                        );
-                        
-                        // Create cube
-                        const geometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
-                        const cube = new THREE.Mesh(geometry, materials);
-                        
-                        // Position cube
-                        cube.position.set(xPos, yPos, 0);
-                        cube.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
-                        
-                        // Store project data and categories
-                        const itemTypes = item.projectType.includes(',') 
-                            ? item.projectType.split(',').map(t => t.trim()) 
-                            : [item.projectType.trim()];
-                        
-                        cube.userData = {
-                            portfolioItem: item,
-                            categories: itemTypes,
-                            uniqueId: item.id
-                        };
-                        
-                        // Add to scene
-                        scene.add(cube);
-                        if (cubeGroup) cubeGroup.add(cube);
-                        cubes.push(cube);
-                        
-                        // Check if this is the last cube to load
-                        loadedCubeCount++;
-                        if (loadedCubeCount === totalCubes) {
-                            // All cubes loaded, apply default filter
-                            const defaultFilter = "Selected Works - My Best Stuff";
-                            filterCubes(defaultFilter);
-                        }
-                    }
-                );
-            });
-        }
-        
-        // Filter cubes based on selected category and reposition them
-        function filterCubes(filter) {
-            // Determine which cubes should be visible
-            const visibleCubes = [];
-            cubes.forEach(cube => {
-                if (filter === 'ALL') {
-                    visibleCubes.push(cube);
-                } else {
-                    // Show cube if it belongs to the selected category
-                    if (cube.userData.categories && cube.userData.categories.includes(filter)) {
-                        visibleCubes.push(cube);
-                    }
-                }
-            });
-            
-            // Sort visible cubes by release date (newest first)
-            visibleCubes.sort((a, b) => {
-                const dateA = new Date(a.userData.portfolioItem.releaseDate);
-                const dateB = new Date(b.userData.portfolioItem.releaseDate);
-                return dateB - dateA;
-            });
-            
-            // Hide all cubes first
-            cubes.forEach(cube => {
-                cube.visible = false;
-            });
-            
-            // Get current responsive values
-            const screenWidth = window.innerWidth;
-            let cubeSize, spacing, itemsPerRow;
-            
-            if (screenWidth < 768) {
-                itemsPerRow = 2;
-                spacing = 7.0;
-            } else if (screenWidth < 1024) {
-                itemsPerRow = 2;
-                spacing = 9.0;
-            } else {
-                itemsPerRow = 3;
-                spacing = 10.5;
+            // For mobile screens, use a LOWER value to push cubes DOWN
+            // (in Three.js, lower Y values position objects lower on screen)
+            if (window.innerWidth < 768) {
+                currentYPosition = -0; // Push cubes DOWN on mobile
+            } else if (window.innerWidth < 1024) {
+                currentYPosition = 0; // Slightly down on tablets
             }
             
-            // Starting position (same as initial) - lower to avoid overlapping with filter buttons
-            const currentYPosition = screenWidth < 768 ? -5 : 0;
-            
-            // Reposition visible cubes in a compact grid
-            visibleCubes.forEach((cube, index) => {
-                const row = Math.floor(index / itemsPerRow);
-                const col = index % itemsPerRow;
+            // Create cubes for each project type group
+            projectTypeOrder.forEach(projectType => {
+                const items = groupedItems[projectType];
                 
-                // Check if this is the last row with fewer items
-                const isLastRowWithFewerItems = (row === Math.floor((visibleCubes.length - 1) / itemsPerRow)) && 
-                                                 (visibleCubes.length % itemsPerRow !== 0);
-                const itemsInThisRow = isLastRowWithFewerItems ? (visibleCubes.length % itemsPerRow) : itemsPerRow;
-                const rowOffset = isLastRowWithFewerItems ? (itemsPerRow - itemsInThisRow) / 2 : 0;
-                
-                // Calculate new position
-                const xPos = (col + rowOffset - (itemsPerRow - 1) / 2) * spacing;
-                const yPos = currentYPosition - (row * spacing);
-                
-                // Update cube position
-                cube.position.set(xPos, yPos, 0);
-                cube.visible = true;
+                if (items.length > 0) {
+                    // Add group label
+                    const labelPosition = new THREE.Vector3(0, currentYPosition, 0);
+                    createGroupLabel(projectType, labelPosition);
+                    
+                    // Move down after label (smaller gap)
+                    currentYPosition -= 6;
+                    
+                    // Create cubes for this group
+                    items.forEach((item, index) => {
+                        const row = Math.floor(index / itemsPerRow);
+                        const col = index % itemsPerRow;
+                        
+                        // Determine if this is the last row and has fewer items
+                        const isLastRowWithFewerItems = (row === Math.floor((items.length - 1) / itemsPerRow)) && 
+                                                         (items.length % itemsPerRow !== 0);
+                                                         
+                        // Calculate how many items are in this row
+                        const itemsInThisRow = isLastRowWithFewerItems ? (items.length % itemsPerRow) : itemsPerRow;
+                        
+                        // Adjust the offset for centering in last row if needed
+                        const rowOffset = isLastRowWithFewerItems ? (itemsPerRow - itemsInThisRow) / 2 : 0;
+                        
+                        // Calculate position with the adjusted offset
+                        const xPos = (col + rowOffset - (itemsPerRow - 1) / 2) * spacing;
+                        const yPos = currentYPosition - (row * spacing);
+                        
+                        textureLoader.load(
+                            item.image,
+                            function(texture) {
+                                // Create materials with the texture
+                                const materials = Array(6).fill().map(() =>
+                                    new THREE.MeshStandardMaterial({
+                                        map: texture,
+                                        emissive: new THREE.Color(0x000000),
+                                        emissiveIntensity: 1
+                                    })
+                                );
+                                
+                                // Create cube
+                                const geometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
+                                const cube = new THREE.Mesh(geometry, materials);
+                                
+                                // Position cube
+                                cube.position.set(xPos, yPos, 0);
+                                cube.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
+                                
+                                // Store reference to the portfolio item
+                                // Include a unique ID that combines the project ID and type to avoid conflicts
+                                // when the same item appears in multiple categories
+                                cube.userData = {
+                                    portfolioItem: item,
+                                    uniqueId: `${item.id}_${projectType.replace(/\s+/g, '_')}`
+                                };
+                                
+                                // Add to scene
+                                scene.add(cube);
+                                if (cubeGroup) cubeGroup.add(cube);
+                                cubes.push(cube);
+                                
+                            }
+                        );
+                    });
+                    
+                    // Calculate rows for this group and update current Y position
+                    const rows = Math.ceil(items.length / itemsPerRow);
+                    currentYPosition -= (rows * spacing) + baseGroupSpacing; // Move down by rows plus fixed group spacing
+                }
             });
         }
         
@@ -681,29 +607,11 @@
         
         // Handle mouse movement
         function onMouseMove(event) {
-            // Check if hovering over a UI element
-            const target = event.target;
-            if (target.tagName === 'BUTTON' || 
-                target.closest('#filter-buttons') || 
-                target.closest('#info') || 
-                target.closest('#instructions') ||
-                target.closest('#notification')) {
-                // Hide info panel and reset hover when over UI
-                if (hoveredCube) {
-                    hoveredCube.material.forEach(mat => mat.emissive.set(0x000000));
-                    hoveredCube = null;
-                    document.getElementById('info').style.display = 'none';
-                }
-                return;
-            }
-            
             mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
             mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
         
             raycaster.setFromCamera(mouse, camera);
-            // Only check visible cubes to avoid detecting hidden/overlapping cubes
-            const visibleCubes = cubes.filter(cube => cube.visible);
-            const intersects = raycaster.intersectObjects(visibleCubes);
+            const intersects = raycaster.intersectObjects(cubes);
         
             if (intersects.length > 0) {
                 const cube = intersects[0].object;
@@ -735,23 +643,12 @@
         }
         
         // Handle mouse click
-        function onMouseClick(event) {
-            // Check if click is on a UI element (buttons, info panel, etc.)
-            const target = event.target;
-            if (target.tagName === 'BUTTON' || 
-                target.closest('#filter-buttons') || 
-                target.closest('#info') || 
-                target.closest('#instructions') ||
-                target.closest('#notification')) {
-                return; // Don't process cube clicks when clicking UI elements
-            }
-            
+        function onMouseClick() {
             // Update the raycaster with the camera and mouse position
             raycaster.setFromCamera(mouse, camera);
             
-            // Calculate objects intersecting the picking ray (only visible cubes)
-            const visibleCubes = cubes.filter(cube => cube.visible);
-            const intersects = raycaster.intersectObjects(visibleCubes);
+            // Calculate objects intersecting the picking ray
+            const intersects = raycaster.intersectObjects(cubes);
             
             if (intersects.length > 0) {
                 // Get the first intersected cube
