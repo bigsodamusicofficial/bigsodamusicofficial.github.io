@@ -8,7 +8,7 @@ const portfolioDatabase = [
     "label": "Epidemic Sound",
     "url": "https://open.spotify.com/album/5zhcFEb2pttIfOzgKmxW6Q?si=gyx_3k-DRjaJ23QEq1CcZw",
     "image": "images/resized/iocl_lil.jpg",
-    "projectType": "All Production, Mixing/Mastering",
+    "projectType": "Principal Production, Mixing/Mastering",
     "releaseDate": "2022-09-30"
   },
   {
@@ -19,7 +19,7 @@ const portfolioDatabase = [
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/5WCMhEBcFS5AuMNYVcCXOe",
     "image": "images/resized/lil_kmwid.jpg",
-    "projectType": "All Production, Selected Works - My Best Stuff, Mixing/Mastering",
+    "projectType": "Principal Production, Selected Works, Mixing/Mastering",
     "releaseDate": "2024-07-04"
   },
   {
@@ -30,7 +30,7 @@ const portfolioDatabase = [
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/3uUfO1iIgATtPXrl0AvAl4",
     "image": "images/resized/big_sfrp.jpg",
-    "projectType": "Solo Material, Mixing/Mastering",
+    "projectType": "Solo Work, Mixing/Mastering",
     "releaseDate": "2020-09-30"
   },
   {
@@ -41,7 +41,7 @@ const portfolioDatabase = [
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/1dohDK6HhYhQ6vnEZJe5QI",
     "image": "images/resized/lil_big_big_big.jpg",
-    "projectType": "Solo Material, Mixing/Mastering",
+    "projectType": "Solo Work, Mixing/Mastering",
     "releaseDate": "2020-01-07"
   },
   {
@@ -52,7 +52,7 @@ const portfolioDatabase = [
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/3LEkVZ6suLHIzUs7o6Cdwb",
     "image": "images/resized/big_apy.jpg",
-    "projectType": "Solo Material, Mixing/Mastering",
+    "projectType": "Solo Work, Mixing/Mastering",
     "releaseDate": "2018-11-29"
   },
   {
@@ -63,7 +63,7 @@ const portfolioDatabase = [
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/4vKCHkXO7pu6H9kVb9aECa",
     "image": "images/resized/lil_sugarhead.jpg",
-    "projectType": "Solo Material, Mixing/Mastering",
+    "projectType": "Solo Work, Mixing/Mastering",
     "releaseDate": "2017-12-12"
   },
   {
@@ -74,7 +74,7 @@ const portfolioDatabase = [
     "label": "Self-Released, bandcamp only",
     "url": "https://therealbigsoda.bandcamp.com/album/soda-de-beber",
     "image": "images/resized/big_beber.jpg",
-    "projectType": "Solo Material",
+    "projectType": "Solo Work",
     "releaseDate": "2019-05-14"
   },
   {
@@ -85,7 +85,7 @@ const portfolioDatabase = [
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/0Td9C4ZW9n9pfK03UZy9NI",
     "image": "images/resized/lil_surfsup.jpg",
-    "projectType": "Solo Material, Mixing/Mastering",
+    "projectType": "Solo Work, Mixing/Mastering",
     "releaseDate": "2021-02-11"
   },
   {
@@ -96,7 +96,7 @@ const portfolioDatabase = [
     "label": "Secret Souls",
     "url": "https://open.spotify.com/album/5FcnST5e1A5mhldYlSxd3h",
     "image": "images/resized/lil_tmsw.jpg",
-    "projectType": "Solo Material, Mixing/Mastering",
+    "projectType": "Solo Work, Mixing/Mastering",
     "releaseDate": "2023-12-01"
   },
   {
@@ -107,7 +107,7 @@ const portfolioDatabase = [
     "label": "The Retune Project",
     "url": "https://open.spotify.com/album/5MTtDjq255sriOGlWZTxOr",
     "image": "images/resized/lil_twaasp.jpg",
-    "projectType": "Solo Material, Mixing/Mastering",
+    "projectType": "Solo Work, Mixing/Mastering",
     "releaseDate": "2024-11-29"
   },
   {
@@ -118,7 +118,7 @@ const portfolioDatabase = [
     "label": "Aviary Bridge",
     "url": "https://open.spotify.com/album/3GqZptYaHEOc1Z6lu0hRgd?si=z1l4CSmsSXOC4xtsEy6FbA",
     "image": "images/resized/lushones.jpg",
-    "projectType": "Solo Material, Selected Works - My Best Stuff, Mixing/Mastering",
+    "projectType": "Solo Work, Selected Works, Mixing/Mastering",
     "releaseDate": "2025-10-07"
   },
   {
@@ -129,7 +129,7 @@ const portfolioDatabase = [
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/3wnXmhORctJ2LhIGZt9x31?si=-AVGCsKuQGy5rjYwwjNpIA",
     "image": "images/resized/lil_dv1.jpg",
-    "projectType": "Solo Material, Selected Works - My Best Stuff",
+    "projectType": "Solo Work, Selected Works",
     "releaseDate": "2024-08-05"
   },
   {
@@ -140,7 +140,7 @@ const portfolioDatabase = [
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/44UcMnRTSIJD8HgoenLFge?si=4SKBxYiZSwSiAMHA2KFxZQ",
     "image": "images/resized/lil_dv2.jpg",
-    "projectType": "Solo Material",
+    "projectType": "Solo Work",
     "releaseDate": "2025-02-01"
   },
   {
@@ -151,7 +151,7 @@ const portfolioDatabase = [
     "label": "Friends of Friends",
     "url": "https://open.spotify.com/album/6wxsedy6XLNWY4kSG662X1?si=X_HZ823VTpyBpFb9mJprvQ",
     "image": "images/resized/lil_ingarden.jpg",
-    "projectType": "All Production, Mixing/Mastering",
+    "projectType": "Principal Production, Mixing/Mastering",
     "releaseDate": "2025-03-25"
   },
   {
@@ -162,7 +162,7 @@ const portfolioDatabase = [
     "label": "Friends of Friends",
     "url": "https://open.spotify.com/album/1GyU1akWsJvgVvVnlSfNhT",
     "image": "images/resized/lil_wiaifw.jpg",
-    "projectType": "All Production, Selected Works - My Best Stuff, Mixing/Mastering",
+    "projectType": "Principal Production, Selected Works, Mixing/Mastering",
     "releaseDate": "2024-09-06"
   },
   {
@@ -173,7 +173,7 @@ const portfolioDatabase = [
     "label": "Friends of Friends",
     "url": "https://open.spotify.com/album/4HqDcFC4QlVCzBnrADvcpz",
     "image": "images/resized/crii-small.jpeg",
-    "projectType": "All Production, Mixing/Mastering",
+    "projectType": "Principal Production, Mixing/Mastering",
     "releaseDate": "2022-06-10"
   },
   {
@@ -184,7 +184,7 @@ const portfolioDatabase = [
     "label": "Epidemic Sound",
     "url": "https://open.spotify.com/album/7hyDQX8jSIJTgfyAZGtvHJ",
     "image": "images/resized/quo-small.jpg",
-    "projectType": "All Production, Mixing/Mastering",
+    "projectType": "Principal Production, Mixing/Mastering",
     "releaseDate": "2022-06-10"
   },
   {
@@ -195,7 +195,7 @@ const portfolioDatabase = [
     "label": "Epidemic Sound",
     "url": "https://open.spotify.com/album/69aXkfD7bJROlPuZok3Vf3",
     "image": "images/resized/lil_vul.jpg",
-    "projectType": "All Production, Mixing/Mastering",
+    "projectType": "Principal Production, Mixing/Mastering",
     "releaseDate": "2022-12-02"
   },
   {
@@ -206,13 +206,13 @@ const portfolioDatabase = [
     "label": "Club Queen Records",
     "url": "https://open.spotify.com/album/6hMnjP2qa0bOHAX8XDKANe",
     "image": "images/resized/big_lsfe.jpg",
-    "projectType": "All Production, Mixing/Mastering",
+    "projectType": "Principal Production, Mixing/Mastering",
     "releaseDate": "2020-10-11"
   },
   {
-    "id": "live's_never_that_bad",
+    "id": "life's_never_that_bad",
     "artistName": "Casey Cope",
-    "projectName": "Live's Never That Bad",
+    "projectName": "Life's Never That Bad",
     "description": "co-production on several tracks",
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/0EKX5jGiRYASpFvefHHZFV?si=5CKqM_W9QNK9zohNGtf74Q",
@@ -228,7 +228,7 @@ const portfolioDatabase = [
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/4XoO1ZggmfsKtGIji1VO5u",
     "image": "images/resized/lil_fn_2.jpg",
-    "projectType": "All Production, Mixing/Mastering",
+    "projectType": "Principal Production, Mixing/Mastering",
     "releaseDate": "2020-07-09"
   },
   {
@@ -239,7 +239,7 @@ const portfolioDatabase = [
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/2dkzAOT4QdPQSigDHHV6JB",
     "image": "images/resized/lil_dancing.jpg",
-    "projectType": "All Production, Mixing/Mastering",
+    "projectType": "Principal Production, Mixing/Mastering",
     "releaseDate": "2019-07-12"
   },
   {
@@ -250,7 +250,7 @@ const portfolioDatabase = [
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/0e0Z0HHjt8snpCbL7gVxOg",
     "image": "images/resized/lil_sst.jpg",
-    "projectType": "All Production, Mixing/Mastering",
+    "projectType": "Principal Production, Mixing/Mastering",
     "releaseDate": "2018-10-19"
   },
   {
@@ -316,7 +316,7 @@ const portfolioDatabase = [
     "label": "Effortless Audio",
     "url": "https://open.spotify.com/album/0nLyUS7ODPQ3PfjXB4XwV0",
     "image": "images/resized/lil_femboy.jpg",
-    "projectType": "Mixing/Mastering, Selected Works - My Best Stuff",
+    "projectType": "Mixing/Mastering, Selected Works",
     "releaseDate": "2018-10-15"
   },
   {
@@ -360,7 +360,7 @@ const portfolioDatabase = [
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/61iNqab7vq1ZEKf9eAYiKU?si=1T-b7rMRTWuc7wuINHT1QQ",
     "image": "images/resized/big_monk.jpg",
-    "projectType": "All Production, Mixing/Mastering, Selected Works - My Best Stuff",
+    "projectType": "Mixing/Mastering, Selected Works",
     "releaseDate": "2021-02-11"
   },
   {
@@ -533,9 +533,9 @@ const portfolioDatabase = [
 // Define the project type order (for consistent display)
 const projectTypeOrder = [
   "ALL",
-  "Selected Works - My Best Stuff",
+  "Selected Works",
   "Mixing/Mastering",
-  "All Production",
-  "Solo Material",
-  "Featured Production"
+  "Principal Production",
+  "Featured Production",
+  "Solo Work"
 ];

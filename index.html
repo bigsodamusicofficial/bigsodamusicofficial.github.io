@@ -448,8 +448,8 @@
                 });
             });
             
-            // Set default filter to "Selected Works - My Best Stuff"
-            const defaultFilter = "Selected Works - My Best Stuff";
+            // Set default filter to "Selected Works"
+            const defaultFilter = "Selected Works";
             const defaultButton = document.querySelector(`[data-filter="${defaultFilter}"]`);
             if (defaultButton) {
                 defaultButton.classList.add('active');
@@ -587,7 +587,7 @@
                         loadedCubeCount++;
                         if (loadedCubeCount === totalCubes) {
                             // All cubes loaded, apply default filter
-                            const defaultFilter = "Selected Works - My Best Stuff";
+                            const defaultFilter = "Selected Works";
                             filterCubes(defaultFilter);
                         }
                     }

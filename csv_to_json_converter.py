@@ -97,11 +97,11 @@ def convert_csv_to_json(csv_path, output_path=None):
     # Note: "ALL" is a special filter (not from CSV) that shows all projects
     preferred_order = [
         "ALL",
-        "Selected Works - My Best Stuff",
+        "Selected Works",
         "Mixing/Mastering",
-        "All Production",
-        "Solo Material",
+        "Principal Production",
         "Featured Production",
+        "Solo Work",
     ]
     
     # Dynamically generate project type order from collected types
