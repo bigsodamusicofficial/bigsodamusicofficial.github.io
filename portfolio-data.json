@@ -527,6 +527,28 @@
       "image": "images/resized/lil_wh.jpg",
       "projectType": "Featured Production",
       "releaseDate": "2025-12-05"
+    },
+    {
+      "id": "quiet_mornings",
+      "artistName": "Various Artists",
+      "projectName": "Quiet Mornings",
+      "description": "produced track 4",
+      "label": "Sleep Tales",
+      "url": "https://open.spotify.com/album/1lrdKhFEDqkwqzLNlrqZ0H?si=uym8QIDyRP2jHa67IbyGeA",
+      "image": "images/resized/lil_quiet.jpg",
+      "projectType": "Featured Production",
+      "releaseDate": "2026-01-19"
+    },
+    {
+      "id": "oasis_glow",
+      "artistName": "Floratura",
+      "projectName": "Oasis Glow",
+      "description": "mixing, mastering",
+      "label": "Self-Released",
+      "url": "https://open.spotify.com/album/0VvLwD88Z54vEjc6Ru8dmc?si=uoebmvTqRxWDx3ScNtla5Q",
+      "image": "images/resized/lil_tura.jpg",
+      "projectType": "Mixing/Mastering",
+      "releaseDate": "2026-02-01"
     }
   ],
   "projectTypeOrder": [
