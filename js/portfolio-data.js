@@ -547,8 +547,19 @@ const portfolioDatabase = [
     "label": "Self-Released",
     "url": "https://open.spotify.com/album/0VvLwD88Z54vEjc6Ru8dmc?si=uoebmvTqRxWDx3ScNtla5Q",
     "image": "images/resized/lil_tura.jpg",
-    "projectType": "Mixing/Mastering",
+    "projectType": "Mixing/Mastering, Selected Works",
     "releaseDate": "2026-02-01"
+  },
+  {
+    "id": "at_night",
+    "artistName": "Casey Cope",
+    "projectName": "Casey Cope...at night!",
+    "description": "co-produced several tracks",
+    "label": "Self-Released",
+    "url": "https://open.spotify.com/album/4Z01dme5Zo0jEECXCXzRya?si=or3agZCxRH-9y0_gwgs_Bg",
+    "image": "images/resized/lil_atnight.jpg",
+    "projectType": "Featured Production",
+    "releaseDate": "2026-02-04"
   }
 ];
 
