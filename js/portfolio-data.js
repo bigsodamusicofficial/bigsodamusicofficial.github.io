@@ -316,7 +316,7 @@ const portfolioDatabase = [
     "label": "Effortless Audio",
     "url": "https://open.spotify.com/album/0nLyUS7ODPQ3PfjXB4XwV0",
     "image": "images/resized/lil_femboy.jpg",
-    "projectType": "Mixing/Mastering, Selected Works",
+    "projectType": "Mixing/Mastering",
     "releaseDate": "2018-10-15"
   },
   {
@@ -560,6 +560,39 @@ const portfolioDatabase = [
     "image": "images/resized/lil_atnight.jpg",
     "projectType": "Featured Production",
     "releaseDate": "2026-02-04"
+  },
+  {
+    "id": "knee_ray",
+    "artistName": "PandaRaps",
+    "projectName": "Knee-Ray",
+    "description": "mixing, executive production",
+    "label": "Self-Released",
+    "url": "https://open.spotify.com/album/0U0HNrOGgmoC9fSfijJm13?si=VVnwpQLOT4SCs8x8tMFDlQ",
+    "image": "images/resized/kneeray.jpg",
+    "projectType": "Mixing/Mastering, Selected Works",
+    "releaseDate": "2026-04-11"
+  },
+  {
+    "id": "qamp_(vol._4)",
+    "artistName": "Qamp",
+    "projectName": "Qamp (Vol. 4)",
+    "description": "co-produced several tracks",
+    "label": "Self-Released",
+    "url": "https://open.spotify.com/album/1WZNP6syw2xYaIAdwN9vib?si=TR1W-0WwS02X0rzqqT2lrg",
+    "image": "images/resized/qamp-4.jpg",
+    "projectType": "Featured Production",
+    "releaseDate": "2026-05-01"
+  },
+  {
+    "id": "irritable",
+    "artistName": "Big Soda",
+    "projectName": "Irritable!",
+    "description": "all production, all writing, all engineering",
+    "label": "Self-Released",
+    "url": "https://open.spotify.com/album/6aDiKrw07kPaKX8b2AuBaO?si=XCceFFXZQ1yF0LI2nyRgfw",
+    "image": "images/resized/big-soda-5.jpg",
+    "projectType": "Solo Material, Mixing/Mastering",
+    "releaseDate": "2026-05-18"
   }
 ];
 
